@@ -7,22 +7,24 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Jamaah;
 use App\Models\Infaq;
 use App\Models\Kajian;
+use App\Models\Slideshow;
 use Yajra\DataTables\DataTables;
 
 class GuestController extends Controller
 {
     public function index()
     {
+        $slideshows = Slideshow::all();
         $nextKajian = Kajian::where('start_time', '>', now())->orderBy('start_time')->first();
         $defaultCityId = 1638;
         $jadwalDefault = app('App\Http\Controllers\JadwalsholatController')->getJadwalSholat($defaultCityId);
         $recentJamaah = Jamaah::orderBy('id', 'desc')->take(5)->get();
         $totalInfaq = Jamaah::sum('nominal');
-        $infaqs = Infaq::all(); // Pastikan ini sesuai dengan dropdown di welcome.blade.php
-
-        return view('welcome', compact('nextKajian', 'jadwalDefault', 'recentJamaah', 'totalInfaq', 'infaqs'));
+        $infaqs = Infaq::all();
+        $lastUpdate = Jamaah::latest('updated_at')->value('updated_at') ?? Jamaah::latest('created_at')->value('created_at');
+        return view('welcome', compact('nextKajian', 'jadwalDefault', 'recentJamaah', 'totalInfaq', 'infaqs', 'lastUpdate', 'slideshows'));
     }
-    
+
     public function create()
     {
         $infaqs = Infaq::all();

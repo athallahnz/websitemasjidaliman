@@ -155,34 +155,44 @@ class JamaahController extends Controller
      */
     public function update(Request $request, $id)
 {
+    // Validasi input
     $request->validate([
         'nama' => 'required|string|max:255',
         'nomor' => 'required|string|max:15',
-        'infaq_id' => 'required|exists:infaq_categories,id',
-        'file' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        'infaq' => 'required|exists:infaqs,id',
+        'file_path' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
     ]);
 
+    // Temukan data Jamaah berdasarkan ID
     $jamaah = Jamaah::findOrFail($id);
-    $jamaah->nama = $request->nama;
-    $jamaah->nomor = $request->nomor;
-    $jamaah->infaq_id = $request->infaq_id;
 
-    if ($request->hasFile('file')) {
-        if ($jamaah->file_path) {
-            \Storage::delete($jamaah->file_path); // Delete old file if exists
+    // Ambil semua input dari request
+    $input = $request->all();
+
+    // Jika ada file yang diunggah
+    if ($file = $request->file('file_path')) {
+        $destinationPath = 'uploads/';
+        $newFileName = date('YmdHis') . "." . $file->getClientOriginalExtension();
+        $file->move($destinationPath, $newFileName);
+        $input['file_path'] = "$destinationPath$newFileName";
+
+        // Hapus file lama jika ada
+        if ($jamaah->file_path && file_exists($jamaah->file_path)) {
+            unlink($jamaah->file_path);
         }
-
-        $destinationPath = 'images/';
-        $fileName = date('YmdHis') . "." . $request->file('file')->getClientOriginalExtension();
-        $request->file('file')->move($destinationPath, $fileName);
-        $jamaah->file_path = $destinationPath . $fileName; // Save new file path
+    } else {
+        unset($input['file_path']);
     }
 
-    $jamaah->save();
+    // Update data Jamaah
+    $jamaah->update($input);
 
-    return redirect()->route('homeuser.index')->with('success', 'Infaq updated successfully');
+    // Tampilkan pesan sukses menggunakan SweetAlert
+    Alert::success('Success', 'Data infaq berhasil diperbarui!');
+
+    // Redirect kembali ke halaman utama
+    return redirect()->route('home');
 }
-
 
     /**
      * Remove the specified resource from storage.

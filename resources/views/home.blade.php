@@ -42,7 +42,7 @@
                 {data: 'nomor', name: 'nomor'},
                 {data: 'alamat', name: 'alamat'},
                 {data: 'nominal', name: 'nominal'},
-                {data: 'infaq_name', name: 'infaq_name'},
+                {data: 'infaq_name', name: 'infaq_id'},
                 {data: 'file_path', name: 'file_path', render: function (data, type, full, meta) {
                     return data ?
                         '<a href="' + '{{ asset('storage') }}/' + data + '" class="btn btn-link p-0" target="_blank">Lihat Bukti</a>'

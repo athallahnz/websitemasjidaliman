@@ -31,17 +31,19 @@
                 <!-- Countdown Timer -->
                 @if ($kajian->start_time)
                 <div class="mt-3">
-                    <h5 class="card-title">Waktu Kajian dimulai</h5>
+                    <h5 class="card-title">Waktu Kajian Dimulai</h5>
                     <p id="countdown" class="card-text"></p>
                 </div>
                 @endif
 
+                @if ($kajian->youtube_link)
                 <a href="{{ $kajian->youtube_link }}" target="_blank" class="btn btn-danger mt-3">
                     <i class="bi bi-youtube"></i> Watch on YouTube
                 </a>
+                @endif
             </div>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-end" style="background-color: #f8f9fa;">
             <a class="btn btn-secondary" href="{{ route('kajians.index') }}" style="background-color: #6c757d; border-color: #6c757d;">Back</a>
         </div>
     </div>
@@ -55,7 +57,6 @@
 
     // Update the count down every 1 second
     var x = setInterval(function() {
-
         // Get today's date and time
         var now = new Date().getTime();
 
@@ -65,17 +66,21 @@
         // Time calculations for days, hours, minutes, and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000)) / 1000);
 
-        // Output the result in an element with id="countdown"
-        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
+        // Update the countdown element
+        var countdownElement = document.getElementById("countdown");
+        if (countdownElement) {
+            countdownElement.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        }
 
-        // If the count down is over, write some text
+        // If the countdown is over
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById("countdown").innerHTML = "Kajian Dimulai!";
+            if (countdownElement) {
+                countdownElement.innerHTML = "Kajian Dimulai!";
+            }
         }
     }, 1000);
 </script>

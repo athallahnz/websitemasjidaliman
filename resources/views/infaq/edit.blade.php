@@ -21,7 +21,7 @@
             <label for="infaq_id" class="form-label">Tujuan Infaq:</label>
             <select name="infaq" id="infaq" class="form-select mb-3">
                 @foreach ($infaqs as $Infaq)
-                <option value="{{ $Infaq->id }}" {{ old('infaq') == $Infaq->id ? 'selected' : '' }}>{{ $Infaq->code.' - '.$Infaq->name }}</option>
+                <option value="{{ $Infaq->id }}" {{ old('infaq', $jamaah->infaq_id) == $Infaq->id ? 'selected' : '' }}>{{ $Infaq->code.' - '.$Infaq->name }}</option>
                 @endforeach
             </select>
             @error('infaq')
@@ -33,7 +33,7 @@
             <label for="file_path" class="form-label">Bukti Transfer:</label>
             <input type="file" class="form-control" id="file_path" name="file_path">
             @if ($jamaah->file_path)
-                <p class="mt-2">File saat ini: <a href="{{ asset('storage/' . $jamaah->file_path) }}">Lihat Bukti</a></p>
+                <p class="mt-2">File saat ini: <a href="{{ asset('storage/' . $jamaah->file_path) }}" target="_blank">Lihat Bukti</a></p>
             @endif
         </div>
 
