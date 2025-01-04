@@ -9,6 +9,8 @@ use App\Http\Controllers\KajianController;
 use App\Http\Controllers\UserKajianController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\SlideshowController;
+use App\Http\Controllers\BidangPendidikanController;
 use Illuminate\Support\Facades\Auth;
 
 // Authentication Routes
@@ -38,6 +40,10 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/jamaah/{id}/edit', [JamaahController::class, 'edit'])->name('infaq.edit');
     Route::put('/jamaah/{id}', [JamaahController::class, 'update'])->name('infaq.update');
     Route::delete('/jamaah/{id}', [JamaahController::class, 'destroy'])->name('infaq.destroy');
+
+    // Route CRUD Slideshow
+    Route::resource('slideshow', SlideshowController::class);
+
 });
 
 // User Routes (Requires User Role)
@@ -74,3 +80,8 @@ Route::get('user/kajians/{kajian}', [UserKajianController::class, 'show'])->name
 // Feedback Routes (Accessible by All Authenticated Users)
 Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
 Route::post('/feedback', [FeedbackController::class, 'send'])->name('feedback.send');
+
+// Bidang Pendidikan
+
+Route::get('/pendidikan', [BidangPendidikanController::class, 'index'])->name('pendidikan');
+

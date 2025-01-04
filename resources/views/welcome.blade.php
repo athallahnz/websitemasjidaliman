@@ -4,35 +4,35 @@
 
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active">
-        <img src="{{ Vite::asset('resources/images/sholat-ied.JPG') }}" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-        <img src="{{ Vite::asset('resources/images/view-masjid.JPG') }}" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-        <img src="{{ Vite::asset('resources/images/ceramah.jpg') }}" class="d-block w-100" alt="...">
-        </div>
+        @foreach($slideshows as $slide)
+            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                <img src="/images/{{ $slide->image }}" alt="{{ $slide->title }}" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>{{ $slide->title }}</h5>
+                    <p>{{ $slide->description }}</p>
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>
 
 @if($nextKajian)
-<div class="container my-5">
-    <div class="row justify-content-between align-items-center" style="background-color:#a36231; box-shadow: 0 4px 8px rgba(0,0,0,0.2); padding: 20px; border-radius: 10px;">
-        <!-- Left Side: Kajian Terdekat Information -->
-        <div class="col-md-5 text-md-start text-center">
-            <h2 class="text-white mb-3">Kajian Terdekat:</h2>
-            <h1 class="fw-bold text-white mb-3">{{$nextKajian->jeniskajian->name}} {{ $nextKajian->title }}</h1>
-            <h3 class="text-white mb-3">Oleh {{$nextKajian->ustadz->name}}</h3>
-        </div>
+    <div class="container my-5">
+        <div class="row justify-content-between align-items-center" style="background-color:#a36231; box-shadow: 0 4px 8px rgba(0,0,0,0.2); padding: 20px; border-radius: 10px;">
+            <!-- Left Side: Kajian Terdekat Information -->
+            <div class="col-md-5 text-md-start text-center">
+                <h2 class="text-white mb-3">Kajian Terdekat:</h2>
+                <h1 class="fw-bold text-white mb-3">{{$nextKajian->jeniskajian->name}} {{ $nextKajian->title }}</h1>
+                <h3 class="text-white mb-3">Oleh {{$nextKajian->ustadz->name}}</h3>
+            </div>
 
-        <!-- Right Side: Countdown Timer -->
-        <div class="col-md-5 text-md-end text-center">
-            <h3 class="text-white mb-4">InsyaAllah akan dimulai dalam:</h3>
-            <div id="timer" style="font-size: 4rem; font-weight: 700; color: #fff; border-radius: 5px; display: inline-block;"></div>
+            <!-- Right Side: Countdown Timer -->
+            <div class="col-md-5 text-md-end text-center">
+                <h3 class="text-white mb-4">InsyaAllah akan dimulai dalam:</h3>
+                <div id="timer" style="font-size: 4rem; font-weight: 700; color: #fff; border-radius: 5px; display: inline-block;"></div>
+            </div>
         </div>
     </div>
-</div>
     <script>
         // Set the date we're counting down to
         var countDownDate = new Date("{{ $nextKajian->start_time }}").getTime();
@@ -146,12 +146,12 @@
                     <div style="width: 70px; height: 70px; background-color: #622200; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px;">
                         <img src={{ Vite::asset('resources/images/masjid.svg')}} style="color: #fff; width: 43px; height: 43px;"></i>
                     </div>
-                    <h5 class="card-title">Ibadah & Dakwah</h5>
+                    <h5 class="card-title">Kemasjidan</h5>
                 </div>
             </a>
         </div>
         <div class="col-md-3">
-            <a href="https://example.com/pendidikan" target="_blank" style="text-decoration: none; color: inherit;">
+            <a href="{{ route('pendidikan') }}" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="card division-card">
                     <div style="width: 70px; height: 70px; background-color: #622200; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px;">
                         <i class="bi bi-mortarboard" style="color: #fff; font-size: 30px;"></i>
@@ -219,6 +219,9 @@
                         <h2>Rp {{ number_format($totalInfaq, 2, ',', '.') }}</h2>
                     </div>
                 </div>
+                <p class="pt-1">
+                    Last Update: {{ $lastUpdate ? $lastUpdate->format('d-m-Y H:i:s') : 'Belum ada data' }}
+                </p>
                 <!-- Informasi Rekening -->
                     <div class="mt-4 row align-items-center">
                         <!-- Logo Bank -->
@@ -237,7 +240,6 @@
         </div>
     </div>
 </div>
-
 
 <div id="infaq" class="container-sm mt-5">
     <form action="{{ route('home.store') }}" method="POST" enctype="multipart/form-data">
@@ -315,7 +317,6 @@
         </div>
     </form>
 </div>
-
 
 <div id="feedback" class="container mt-5">
     <h2>Layanan Kritik & Saran</h2>
@@ -417,7 +418,6 @@
                                 <ul class="list-unstyled">
                                     <li class="mb-2"><a >Sejarah</a></li>
                                     <li class="mb-2"><a >Struktur Organisasi</a></li>
-                                    <li class="mb-2"><a >Struktur Organisasi</a></li>
                                 </ul>
                     </div>
                 </div>
@@ -430,7 +430,7 @@
 <div id="copyright" class="container-fluid py-3" style="background-color: #622200">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-xs-12 text-center" style="color: white;">Masjid Al Iman Sutorejo Indah Surabaya | ©2024</div>
+            <div class="col-sm-12 col-xs-12 text-center" style="color: white;">Yayasan Masjid Al Iman Sutorejo Indah Surabaya | ©2024</div>
         </div>
     </div>
 </div>
