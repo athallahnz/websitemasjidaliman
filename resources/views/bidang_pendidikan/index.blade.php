@@ -85,13 +85,31 @@
                 Your browser does not support the video tag.
             </video>
             <div class="header-content">
-                <h1 class="header-title">Selamat datang di Pendidikan Yayasan Masjid Al Iman Surabaya</h1>
-                <div class="header-buttons">
+                <h1 class="h1 header-title">Selamat datang di Pendidikan</h1>
+                <h3 class="h3 header-title">Yayasan Masjid Al Iman Surabaya</h3>
+                <div class="header-buttons mt-4">
                     <a href="#" class="btn btn-primary btn-lg">Pelajari lebih lanjut</a>
                     <a href="#pendaftaran" class="btn btn-secondary btn-lg">Pendaftaran</a>
                 </div>
             </div>
         </header>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered"> <!-- Modal di tengah layar -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <strong class="modal-title" id="exampleModalLabel">Informasi Penting</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex justify-content-center align-items-center">
+                        <img src="{{ asset('images/poster-ppdb-2425.jpg') }}" class="img-fluid" alt="poster"
+                            style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="stats" class="stats-section py-5" style="background-color: #FBC02D;">
             <div class="container text-center">
                 <div class="row">
@@ -116,11 +134,14 @@
         </div>
         <div id="isi konten" class="container mt-5">
             <!-- Profil Sub Bidang Pendidikan -->
-            <section id="profil" class="my-5">
-                <h2 class="text-center mb-4">Gambaran Pendidikan</h2>
+            <section data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" id="profil" class="my-5">
+                <h2 class="text-center mb-4 fw-bold">Gambaran Pendidikan</h2>
+                <p class="text-center mb-5 px-5">Melalui berbagai program pendidikan berkualitas, kami berkomitmen untuk
+                    menciptakan generasi penerus yang cerdas, berakhlak mulia, dan berdaya saing global dengan pendekatan
+                    holistik yang berbasis nilai keislaman dan kearifan lokal.</p>
                 <div class="row">
                     <!-- TPQ -->
-                    <div class="col-md-3">
+                    <div class="col-md-3" data-aos="fade-in" data-aos-duration="2000" data-aos-delay="200">
                         <div class="card">
                             <img src={{ asset('images/sholat-ied.JPG') }} class="card-img-top" alt="TPQ">
                             <div class="card-body">
@@ -132,7 +153,7 @@
                         </div>
                     </div>
                     <!-- Daycare -->
-                    <div class="col-md-3">
+                    <div class="col-md-3" data-aos="fade-in" data-aos-duration="3000" data-aos-delay="300">
                         <div class="card">
                             <img src={{ asset('images/sholat-ied.JPG') }} class="card-img-top" alt="Daycare">
                             <div class="card-body">
@@ -143,7 +164,7 @@
                         </div>
                     </div>
                     <!-- Kelompok Bermain -->
-                    <div class="col-md-3">
+                    <div class="col-md-3" data-aos="fade-in" data-aos-duration="4000" data-aos-delay="400">
                         <div class="card">
                             <img src={{ asset('images/sholat-ied.JPG') }} class="card-img-top" alt="Kelompok Bermain">
                             <div class="card-body">
@@ -154,7 +175,7 @@
                         </div>
                     </div>
                     <!-- Taman Kanak-kanak -->
-                    <div class="col-md-3">
+                    <div class="col-md-3" data-aos="fade-in" data-aos-duration="5000" data-aos-delay="500">
                         <div class="card">
                             <img src={{ asset('images/sholat-ied.JPG') }} class="card-img-top" alt="Taman Kanak-kanak">
                             <div class="card-body">
@@ -169,14 +190,14 @@
 
             <!-- Pendaftaran Online -->
             <section id="pendaftaran" class="my-5 text-center">
-                <h2 class="mb-4">Informasi Pendaftaran</h2>
+                <h2 class="mb-4 fw-bold">Informasi Pendaftaran</h2>
                 {{-- <a href="{{ route('pendaftaran.informasi') }}" class="btn btn-primary btn-lg">Informasi Pendaftaran</a> --}}
-                <a href="#" class="btn btn-primary btn-lg">Informasi Pendaftaran</a>
+                <a href="#" class="btn btn-primary">Informasi Pendaftaran</a>
             </section>
 
             <!-- Galeri Kegiatan -->
             <section id="galeri" class="my-5">
-                <h2 class="text-center mb-4">Galeri Kegiatan</h2>
+                <h2 class="text-center mb-4 fw-bold">Galeri Kegiatan</h2>
                 <div class="row">
                     <div class="col-md-4">
                         <img src={{ asset('images/sholat-ied.JPG') }} class="img-fluid" alt="Kegiatan 1">
@@ -192,14 +213,70 @@
 
             <!-- Kontak -->
             <section id="kontak" class="my-5">
-                <h2 class="text-center mb-4">Kontak Kami</h2>
-                <p class="text-center">Untuk informasi lebih lanjut, hubungi kami melalui:</p>
-                <ul class="list-unstyled text-center">
-                    <li>Telepon: (031) 1234567</li>
-                    <li>Email: info@alimansurabaya.com</li>
-                    <li>Alamat: Jl. Pendidikan No. 12, Surabaya</li>
-                </ul>
+                <div class="container py-5 px-4">
+                    <div class="row py-2 px-4">
+                        <div class="container">
+                            <div class="row align-items-start">
+                                <!-- Kolom Kiri: Logo dan Kontak -->
+                                <div class="col-md-6">
+                                    <a href="#" class="logo text-decoration-none">
+                                        <div class="d-flex align-items-start">
+                                            <img class="img-fluid mb-4"
+                                                src="{{ Vite::asset('resources/images/logo.png') }}" alt="Logo Al Iman"
+                                                width="90">
+                                        </div>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-3">
+                                            <div class="row">
+                                                <div class="col-sm-1">
+                                                    <i class="bi bi-geo-alt"></i>
+                                                </div>
+                                                <div class="col">
+                                                    Jl. Pendidikan No. 12, Surabaya
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-3">
+                                            <div class="row">
+                                                <div class="col-sm-1">
+                                                    <i class="bi bi-telephone"></i>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="tel:+62311234567">(031) 1234567</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-3">
+                                            <div class="row">
+                                                <div class="col-sm-1">
+                                                    <i class="bi bi-envelope"></i>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="mailto:info@alimansurabaya.com">info@alimansurabaya.com</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Kolom Kanan: Informasi Navbar -->
+                                <div class="col-md-6">
+                                    <h5 class="mb-4">Informasi Selengkapnya</h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-3"><a href="#">Pendaftaran</a></li>
+                                        <li class="mb-3"><a href="#">Kegiatan</a></li>
+                                        <li class="mb-3"><a href="#">Galeri</a></li>
+                                        <li class="mb-3"><a href="#">Profil</a></li>
+                                        <li class="mb-3"><a href="#">Kontak Kami</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
+
+
         </div>
         <div id="copyright" class="container-fluid py-3" style="background-color: #622200">
             <div class="container-fluid">
@@ -272,5 +349,18 @@
         });
 
         counters.forEach(counter => observer.observe(counter));
+
+        // JavaScript Modal
+
+        window.addEventListener('load', function () {
+        setTimeout(function () {
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+            myModal.show();
+        }, 1500);  
+    });
+
+        // Javascript Animation AOS
+
+        AOS.init();
     </script>
 @endpush

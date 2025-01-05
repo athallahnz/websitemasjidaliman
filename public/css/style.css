@@ -1,41 +1,54 @@
 .page-pendidikan {
-    /* Profil Sub Bidang Pendidikan - Card Styles */
-    /* Style untuk navbar dan link */
-    
+    font-family: "Quicksand", sans-serif;
+
     @keyframes slideDown {
         from {
             opacity: 0;
-            transform: translateY(-20px); /* Mulai dari atas */
+            transform: translateY(-20px);
         }
         to {
             opacity: 1;
-            transform: translateY(0); /* Posisi normal */
+            transform: translateY(0);
         }
     }
 
-    /* Default style untuk dropdown-menu (tidak terlihat) */
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .navbar-collapse {
+        display: none;
+    }
+
+    .navbar-toggler:hover + .navbar-collapse {
+        display: block;
+    }
+
+    .navbar-toggler:focus + .navbar-collapse {
+        display: block;
+    }
+
     .nav-item .dropdown-menu {
         display: none;
         opacity: 0;
-        transform: translateY(20px); /* Tersembunyi di atas */
-        transition: opacity 0.3s ease, transform 0.3s ease; /* Animasi transisi */
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    /* Saat dropdown terbuka */
     .nav-item.dropdown:hover .dropdown-menu {
-        display: block; /* Tampilkan menu */
-        animation: slideDown 0.3s ease; /* Animasi slide */
+        display: block;
+        animation: slideDown 0.3s ease;
         opacity: 1;
-        transform: translateY(0); /* Posisi normal */
+        transform: translateY(0);
     }
 
     .navbar-nav {
-        justify-content: center; /* Membuat item rata tengah */
-        width: 100%; /* Memastikan navbar mencakup seluruh lebar */
+        justify-content: center;
+        width: 100%;
     }
 
     .nav-item {
-        margin: 0 15px; /* Jarak horizontal antar item */
+        margin: 0 15px;
         text-transform: uppercase;
     }
 
@@ -47,15 +60,13 @@
         color: #ffd700 !important;
     }
 
-    /* Style untuk dropdown menu */
     .nav-item.dropdown:hover .dropdown-menu {
         display: block;
     }
 
-    /* Background warna coklat untuk dropdown */
     .dropdown-menu {
         background-color: #622200;
-        border: none; /* Menghilangkan border */
+        border: none;
         border-radius: 0;
         padding: 0;
         margin: 0;
@@ -63,22 +74,19 @@
     }
 
     .dropdown-item {
-        padding: 10px 12px; /* Anda bisa mengatur padding-nya agar tetap proporsional */
+        padding: 10px 12px;
     }
 
-    /* Warna teks di dalam dropdown */
     .dropdown-menu .dropdown-item {
-        color: white; /* Warna teks default */
+        color: white;
         background-color: #622200;
     }
 
-    /* Hover effect di dropdown item */
     .dropdown-menu .dropdown-item:hover {
         background-color: #622200;
-        color: #ffd700; /* Warna teks saat hover */
+        color: #ffd700;
     }
 
-    /* Menambahkan animasi atau efek transisi jika diperlukan */
     .nav-item.dropdown .dropdown-menu {
         display: none;
         opacity: 0;
@@ -90,16 +98,14 @@
         opacity: 1;
     }
 
-    /* Style tambahan untuk memastikan dropdown tetap terlihat */
     .nav-item.dropdown {
-        position: relative; /* Agar dropdown muncul di atas */
+        position: relative;
     }
 
-    /* Style untuk header banner */
     .header-banner {
         position: relative;
         width: 100%;
-        height: 100vh; /* Full height */
+        height: 100vh;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -108,7 +114,6 @@
         color: white;
     }
 
-    /* Video background styling */
     .video-background {
         position: absolute;
         top: 0;
@@ -116,66 +121,75 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        z-index: -1; /* Membuat video di bawah konten */
+        z-index: -1;
     }
 
-    /* Header content styling */
     .header-content {
         position: relative;
-        z-index: 1; /* Agar konten ada di atas video */
-        max-width: 800px; /* Membatasi lebar teks */
-        padding: 20px;
+        z-index: 1;
     }
 
-    /* Title styling */
-    .header-title {
-        font-size: 2.5rem; /* Ukuran teks judul */
+    .h1.header-title {
+        font-size: 4rem;
         font-weight: bold;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Tambahkan bayangan */
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
 
-    /* Button styling */
+    .h3.header-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
     .header-buttons .btn {
         margin: 10px;
         padding: 10px 20px;
         font-size: 1.2rem;
         border-radius: 10px;
-        text-transform: uppercase;
     }
 
     .header-buttons .btn-primary {
-        background-color: #ffd700; /* Warna tombol Pelajari lebih lanjut */
+        background-color: #ffd700;
         border: none;
         color: #622200;
     }
 
     .header-buttons .btn-primary:hover {
-        background-color: white; /* Warna hover */
+        background-color: white;
         color: #622200;
     }
 
     .header-buttons .btn-secondary {
-        background-color: #622200; /* Warna tombol Pendaftaran */
+        background-color: #622200;
         border: none;
     }
 
     .header-buttons .btn-secondary:hover {
-        background-color: white; /* Warna hover */
+        background-color: white;
         color: #622200;
     }
 
+    .img-original {
+        max-width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .stats-section {
-        background-color: #fbc02d; /* Warna kuning */
+        background-color: #fbc02d;
     }
 
     .stats-section h1 {
-        font-size: 4rem; /* Ukuran angka besar */
+        font-size: 4rem;
         margin-bottom: 10px;
     }
 
     .stats-section p {
-        font-size: 1.25rem; /* Ukuran teks deskripsi */
+        font-size: 1.25rem;
     }
 
     .card {
@@ -202,12 +216,12 @@
 
     .card-title {
         font-size: 1.25rem;
-        color: #003366;
+        color: #622200;
         margin-bottom: 15px;
     }
 
     .card-text {
-        font-size: 1rem;
+        font-size: 0.95rem;
         color: #555;
     }
 
@@ -225,9 +239,7 @@
         border-color: #ffd700;
     }
 
-    /* Pendaftaran Online Section */
     #pendaftaran {
-        background-color: #f4f4f4;
         padding: 50px 0;
         text-align: center;
     }
@@ -235,7 +247,6 @@
     #pendaftaran .btn {
         background-color: #622200;
         border-color: #622200;
-        font-size: 1.25rem;
         padding: 15px 30px;
         transition: background-color 0.3s ease;
     }
@@ -245,7 +256,6 @@
         border-color: #ffd700;
     }
 
-    /* General Section Styling */
     .text-center {
         text-align: center;
     }
@@ -258,20 +268,203 @@
         margin-bottom: 1.5rem;
     }
 
-    /* Custom Padding for Sections */
     #profil,
     #pendaftaran {
         padding: 60px 0;
     }
 
-    /* Footer Styling (if necessary) */
     footer {
         background-color: #622200;
         color: #fff;
         padding: 20px 0;
         text-align: center;
     }
+
+    /* Tablet & Mobile Styles */
+    @media (max-width: 768px) {
+        .navbar-nav {
+            flex-direction: column; /* Stack navbar items vertically */
+            text-align: center; /* Center align navbar items */
+        }
+
+        .header-title {
+            font-size: 3rem;
+        }
+
+        .header-buttons .btn {
+            font-size: 1rem;
+            padding: 8px 15px;
+        }
+
+        .card-title {
+            font-size: 1rem;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .stats-section h1 {
+            font-size: 2.5rem;
+        }
+
+        .stats-section p {
+            font-size: 1rem;
+        }
+
+        .navbar-collapse {
+            display: block;
+        }
+
+        .dropdown-menu {
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-original {
+            max-width: 90%; /* Ensure images fit properly */
+        }
+
+        .text-center {
+            padding: 0 15px;
+        }
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 576px) {
+        .header-title {
+            font-size: 2.5rem;
+        }
+
+        .header-buttons .btn {
+            font-size: 1rem;
+            padding: 8px 15px;
+        }
+
+        .card-title {
+            font-size: 1rem;
+        }
+
+        .navbar-toggler {
+            padding: 5px 10px;
+        }
+
+        .card-body {
+            padding: 12px;
+        }
+
+        .stats-section h1 {
+            font-size: 2rem;
+        }
+
+        .stats-section p {
+            font-size: 0.875rem;
+        }
+    }
 }
+
+/* Navbar background */
+.navbar {
+    background-color: #ffffff; /* Warna latar belakang navbar putih */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+}
+
+/* Styling navbar items */
+.navbar-nav {
+    justify-content: center; /* Membuat item rata tengah */
+    width: 100%; /* Memastikan navbar mencakup seluruh lebar */
+}
+
+.nav-item {
+    margin: 0 15px; /* Jarak horizontal antar item */
+    text-transform: uppercase; /* Huruf kapital pada teks */
+}
+
+.nav-link {
+    white-space: nowrap; /* Mencegah teks membungkus */
+}
+
+/* Styling link di navbar */
+.navbar-nav .nav-link {
+    color: #622200 !important; /* Warna teks navbar */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #a36231 !important; /* Warna teks saat hover */
+    transition: color 0.3s ease; /* Efek transisi warna */
+}
+
+/* Dropdown styling */
+.nav-item .dropdown-menu {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px); /* Tersembunyi di atas */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Animasi transisi */
+    border: none; /* Menghilangkan border */
+    border-radius: 0; /* Tidak ada radius */
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block; /* Tampilkan menu */
+    opacity: 1;
+    transform: translateY(0); /* Posisi normal */
+}
+
+/* Background dan border dropdown */
+.dropdown-menu {
+    background-color: #ffffff; /* Latar belakang dropdown */
+    border: none; /* Menghilangkan border */
+    border-radius: 0; /* Tidak ada radius */
+    padding: 0;
+    margin: 0;
+}
+
+/* Dropdown item styling */
+.dropdown-menu .dropdown-item {
+    color: #622200; /* Warna teks default di dropdown */
+    padding: 10px 12px; /* Padding item dropdown */
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: white; /* Warna latar belakang saat hover */
+    color: #a36231; /* Warna teks saat hover */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Efek transisi */
+}
+
+/* Right side navbar (rata kanan) */
+.navbar-nav.ms-auto {
+    justify-content: flex-end; /* Posisi item ke kanan */
+}
+
+/* Left side navbar (rata tengah) */
+.navbar-nav.mx-auto {
+    display: flex;
+    justify-content: center; /* Rata tengah */
+    width: 100%;
+}
+
+/* Posisi dropdown agar muncul di atas */
+.nav-item.dropdown {
+    position: relative;
+}
+
+/* Efek transisi untuk hover */
+.nav-item.dropdown .dropdown-menu {
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth dropdown */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto; /* Ensure responsive images */
+}
+
+#jadwalsholat .list-group-item {
+    border: none;
+    background-color: transparent;
+}
+
 
 #divisioncard .division-card {
     text-align: center;
@@ -295,4 +488,54 @@
 .icon-circle i {
     color: #fff;
     font-size: 30px;
+}
+
+/* Responsif Styling */
+@media (max-width: 1024px) { /* Tablet */
+    .container {
+        padding: 15px;
+    }
+
+    .location-schedule {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .schedule-morning, .schedule-evening {
+        width: 100%;
+    }
+
+    .navbar-nav {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) { /* Mobile */
+
+    .location-schedule {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .schedule-morning, .schedule-evening {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .schedule-morning, .schedule-evening {
+        margin: 10px 0;
+    }
+
+    .time p {
+        font-size: 14px;
+    }
+
+    .navbar-nav {
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-item {
+        margin: 10px 0;
+    }
 }
