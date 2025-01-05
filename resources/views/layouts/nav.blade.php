@@ -10,50 +10,56 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item px-3">
+            <ul class="navbar-nav">
+                <!-- Home -->
+                <li class="nav-item">
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
-                <li class="nav-item px-3">
+
+                <!-- Dashboard Infaq / Infaqku -->
+                <li class="nav-item">
                     @if (Auth::check() && Auth::user()->hasRole('admin'))
                         <a class="nav-link" href="{{ url('/home') }}">Dashboard Infaq</a>
                     @else
-                        <a class="nav-link" href="{{ url('/homeuser') }}">Infaqku</a>
+                        <a class="nav-link" href="{{ url('/infaqku') }}">Infaqku</a>
                     @endif
                 </li>
-                <li class="nav-item px-3">
+
+                <!-- Dashboard Kajian / Kajian -->
+                <li class="nav-item">
                     @if (Auth::check() && Auth::user()->hasRole('admin'))
                         <a class="nav-link" href="{{ url('/kajians') }}">Dashboard Kajian</a>
                     @else
                         <a class="nav-link" href="{{ url('user/kajians') }}">Kajian</a>
                     @endif
                 </li>
-                <li class="nav-item px-3">
+
+                <!-- Dashboard Slideshow / Kegiatan -->
+                <li class="nav-item">
                     @if (Auth::check() && Auth::user()->hasRole('admin'))
                         <a class="nav-link" href="{{ url('/slideshow') }}">Dashboard Slideshow</a>
                     @else
                         <a class="nav-link" href="#">Kegiatan</a>
                     @endif
                 </li>
-                <!-- Dropdown -->
-                <li class="nav-item dropdown px-3">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+
+                <!-- Profil Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Profil
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <a class="dropdown-item" href="#">
-                                <strong>Sejarah</strong>
-                                <p class="small mb-0">Pembangunan yang berkesinambungan mengharuskan adanya suatu
-                                    perencanaan jangka panjang.</p>
+                                Sejarah
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item"
                                 href="https://drive.google.com/file/d/1mlKAQmGScW1LiuNoznt4NKvKXQBRfe-a/view?usp=sharing"
                                 target="_blank">
-                                <strong>Struktur Organisasi</strong>
+                                Struktur Organisasi
                             </a>
                         </li>
                     </ul>

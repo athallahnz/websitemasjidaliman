@@ -53,7 +53,7 @@ Route::group(['middleware' => ['role:user']], function () {
     });
 
     // User Infaq Routes
-    Route::get('/homeuser', [HomeuserController::class, 'index'])->name('homeuser');
+    Route::get('/infaqku', [HomeuserController::class, 'index'])->name('infaqku');
     Route::get('/homeuser/infaq/{id}', [HomeuserController::class, 'show'])->name('homeuser.infaq.show');
     Route::get('/homeuser/infaq/{id}/edit', [HomeuserController::class, 'edit'])->name('homeuser.infaq.edit');
     Route::put('/homeuser/infaq/{id}', [HomeuserController::class, 'update'])->name('homeuser.infaq.update');

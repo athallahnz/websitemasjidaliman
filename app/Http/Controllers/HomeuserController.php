@@ -28,7 +28,7 @@ class HomeuserController extends Controller
             ->where('jamaahs.user_id', $userId)
             ->get();
 
-        return view('homeuser', compact('jamaahs'));
+        return view('infaqku', compact('jamaahs'));
     }
 
     /**
