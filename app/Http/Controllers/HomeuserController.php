@@ -111,7 +111,7 @@ class HomeuserController extends Controller
         if (Auth::user()->hasRole('admin')) {
             return redirect()->route('home'); // Redirect ke halaman admin
         } elseif (Auth::user()->hasRole('user')) {
-            return redirect()->route('homeuser'); // Redirect ke halaman user
+            return redirect()->route('infaqku'); // Redirect ke halaman user
         } else {
             return redirect()->route('welcome'); // Redirect ke halaman default jika bukan admin/user
         }
