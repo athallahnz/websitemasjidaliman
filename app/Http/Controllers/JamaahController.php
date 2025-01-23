@@ -61,10 +61,10 @@ class JamaahController extends Controller
 
             return DataTables::of($query)
                 ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '<a href="'.route('infaq.show', $row->id).'" class="btn btn-outline-dark btn-sm me-2" title="View"><i class="bi bi-person-lines-fill"></i></a>';
-                    $actionBtn .= '<a href="'.route('infaq.edit', $row->id).'" class="btn btn-outline-dark btn-sm me-2" title="Edit"><i class="bi bi-pencil-square"></i></a>';
-                    $actionBtn .= '<form action="'.route('infaq.destroy', $row->id).'" method="POST" style="display:inline;">'.csrf_field().method_field('DELETE').'<button type="submit" class="btn btn-outline-dark btn-sm" title="Delete"><i class="bi bi-trash"></i></button></form>';
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '<a href="' . route('infaq.show', $row->id) . '" class="btn btn-outline-dark btn-sm me-2" title="View"><i class="bi bi-person-lines-fill"></i></a>';
+                    $actionBtn .= '<a href="' . route('infaq.edit', $row->id) . '" class="btn btn-outline-dark btn-sm me-2" title="Edit"><i class="bi bi-pencil-square"></i></a>';
+                    $actionBtn .= '<form action="' . route('infaq.destroy', $row->id) . '" method="POST" style="display:inline;">' . csrf_field() . method_field('DELETE') . '<button type="submit" class="btn btn-outline-dark btn-sm" title="Delete"><i class="bi bi-trash"></i></button></form>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
@@ -95,37 +95,36 @@ class JamaahController extends Controller
 
         $nextKajian = Kajian::where('start_time', '>', now())->orderBy('start_time')->first();
 
-        return view('welcome', compact('infaqs', 'jadwalDefault', 'searchCity','nextKajian'));
+        return view('welcome', compact('infaqs', 'jadwalDefault', 'searchCity', 'nextKajian'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'nama' => 'required|string|max:255',
-        'nomor' => 'required|string|max:255',
-        'alamat' => 'nullable|string|max:255',
-        'nominal' => 'required|numeric',
-        'infaq' => 'required|exists:infaq_categories,id', // Validasi untuk infaq
-        'file' => 'nullable|file|mimes:jpg,png,pdf|max:2048', // Validasi untuk file
-    ]);
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'nomor' => 'required|string|max:255',
+            'alamat' => 'nullable|string|max:255',
+            'nominal' => 'required|numeric',
+            'infaq' => 'required|exists:infaq_categories,id', // Validasi untuk infaq
+            'file' => 'nullable|file|mimes:jpg,png,pdf|max:2048', // Validasi untuk file
+        ]);
 
-    $input = $request->all();
+        $input = $request->all();
 
-    if ($file = $request->file('file')) {
-        $destinationPath = 'images/';
-        $fileName = date('YmdHis') . "." . $file->getClientOriginalExtension();
-        $file->move($destinationPath, $fileName);
-        $input['file_path'] = $destinationPath . $fileName; // Save the file path in the database
+        if ($file = $request->file('file')) {
+            $destinationPath = 'images/';
+            $fileName = date('YmdHis') . "." . $file->getClientOriginalExtension();
+            $file->move($destinationPath, $fileName);
+            $input['file_path'] = $destinationPath . $fileName; // Save the file path in the database
+        }
+
+        Jamaah::create($input);
+
+        return redirect()->back()->with('success', 'Infaq berhasil disimpan');
     }
-
-    Jamaah::create($input);
-
-    return redirect()->back()->with('success', 'Infaq berhasil disimpan');
-}
-
 
 
     public function show(string $id)
@@ -154,45 +153,30 @@ class JamaahController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-{
-    // Validasi input
-    $request->validate([
-        'nama' => 'required|string|max:255',
-        'nomor' => 'required|string|max:15',
-        'infaq' => 'required|exists:infaqs,id',
-        'file_path' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
-    ]);
+    {
+        $jamaah = Jamaah::findOrFail($id);
 
-    // Temukan data Jamaah berdasarkan ID
-    $jamaah = Jamaah::findOrFail($id);
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'nomor' => 'required|string|max:255',
+            'alamat' => 'nullable|string|max:255',
+            'nominal' => 'required|numeric',
+            'infaq' => 'required|exists:infaq_categories,id',
+            'file' => 'nullable|file|mimes:jpg,png,pdf|max:2048',
+        ]);
 
-    // Ambil semua input dari request
-    $input = $request->all();
-
-    // Jika ada file yang diunggah
-    if ($file = $request->file('file_path')) {
-        $destinationPath = 'uploads/';
-        $newFileName = date('YmdHis') . "." . $file->getClientOriginalExtension();
-        $file->move($destinationPath, $newFileName);
-        $input['file_path'] = "$destinationPath$newFileName";
-
-        // Hapus file lama jika ada
-        if ($jamaah->file_path && file_exists($jamaah->file_path)) {
-            unlink($jamaah->file_path);
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $destinationPath = 'images/';
+            $fileName = date('YmdHis') . "." . $file->getClientOriginalExtension();
+            $file->move($destinationPath, $fileName);
+            $validated['file_path'] = $destinationPath . $fileName;
         }
-    } else {
-        unset($input['file_path']);
+
+        $jamaah->update($validated);
+
+        return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
-
-    // Update data Jamaah
-    $jamaah->update($input);
-
-    // Tampilkan pesan sukses menggunakan SweetAlert
-    Alert::success('Success', 'Data infaq berhasil diperbarui!');
-
-    // Redirect kembali ke halaman utama
-    return redirect()->route('home');
-}
 
     /**
      * Remove the specified resource from storage.

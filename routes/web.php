@@ -13,6 +13,11 @@ use App\Http\Controllers\SlideshowController;
 use App\Http\Controllers\BidangPendidikanController;
 use Illuminate\Support\Facades\Auth;
 
+Route::get('/storage-link', function(){
+    Artisan::call('storage:link');
+    return 'Storage linked successfully.';
+});
+
 // Authentication Routes
 Auth::routes();
 
@@ -60,7 +65,7 @@ Route::group(['middleware' => ['role:user']], function () {
     Route::delete('/homeuser/infaq/{id}', [HomeuserController::class, 'destroy'])->name('homeuser.infaq.destroy');
 
     // Store Infaq for Users
-    Route::post('/homeuser/store', [HomeuserController::class, 'store'])->name('homeuser.store');
+    Route::post('/infaqku/store', [HomeuserController::class, 'store'])->name('infaqku.store');
 });
 
 // Redirect route for role-based home redirection

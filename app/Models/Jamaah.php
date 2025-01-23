@@ -21,4 +21,5 @@ class Jamaah extends Model
     return $this->hasMany(Jamaah::class);
     }
     protected $fillable = ['nama', 'nomor', 'alamat', 'nominal', 'infaq_id', 'file_path', 'user_id'];
+    public $timestamps = true;
 }
