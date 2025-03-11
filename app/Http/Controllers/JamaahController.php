@@ -10,6 +10,7 @@ use App\Models\Infaq;
 use App\Models\Kajian;
 use Yajra\DataTables\DataTables;
 use RealRashid\SweetAlert\Facades\Alert;
+use Carbon\Carbon;
 
 
 class JamaahController extends Controller
@@ -103,26 +104,33 @@ class JamaahController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
             'nomor' => 'required|string|max:255',
             'alamat' => 'nullable|string|max:255',
             'nominal' => 'required|numeric',
-            'infaq' => 'required|exists:infaq_categories,id', // Validasi untuk infaq
-            'file' => 'nullable|file|mimes:jpg,png,pdf|max:2048', // Validasi untuk file
+            'infaq_id' => 'required|exists:infaqs,id', // Sesuaikan nama tabel yang benar
+            'file' => 'nullable|file|mimes:jpg,png,pdf|max:2048', // Validasi file
+            'created_at' => 'Carbon::now();',
+            'updated_at' => 'Carbon::now();',
         ]);
+        // Tambahkan timestamp secara manual
+        $validatedData['created_at'] = Carbon::now();
+        $validatedData['updated_at'] = Carbon::now();
 
-        $input = $request->all();
+        // Jika ada file, simpan ke storage
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('uploads/jamaah', $fileName, 'public');
 
-        if ($file = $request->file('file')) {
-            $destinationPath = 'images/';
-            $fileName = date('YmdHis') . "." . $file->getClientOriginalExtension();
-            $file->move($destinationPath, $fileName);
-            $input['file_path'] = $destinationPath . $fileName; // Save the file path in the database
+            $validatedData['file_path'] = $path;
+            $validatedData['original_filename'] = $file->getClientOriginalName();
+            $validatedData['encrypted_filename'] = $fileName;
         }
 
-        Jamaah::create($input);
-
+        Jamaah::create($validatedData);
+        dd($validatedData);
         return redirect()->back()->with('success', 'Infaq berhasil disimpan');
     }
 
@@ -156,26 +164,39 @@ class JamaahController extends Controller
     {
         $jamaah = Jamaah::findOrFail($id);
 
-        $validated = $request->validate([
+        $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
             'nomor' => 'required|string|max:255',
             'alamat' => 'nullable|string|max:255',
             'nominal' => 'required|numeric',
-            'infaq' => 'required|exists:infaq_categories,id',
-            'file' => 'nullable|file|mimes:jpg,png,pdf|max:2048',
+            'infaq_id' => 'required|exists:infaq_categories,id', // Sesuaikan nama kolom
+            'file' => 'nullable|file|mimes:jpg,png,pdf|max:2048', // Validasi file
         ]);
 
+        // Jika ada file baru, hapus file lama dan simpan file baru
         if ($request->hasFile('file')) {
+            // Hapus file lama jika ada
+            if ($jamaah->file_path && file_exists(storage_path('app/public/' . $jamaah->file_path))) {
+                unlink(storage_path('app/public/' . $jamaah->file_path));
+            }
+
+            // Simpan file baru
             $file = $request->file('file');
-            $destinationPath = 'images/';
-            $fileName = date('YmdHis') . "." . $file->getClientOriginalExtension();
-            $file->move($destinationPath, $fileName);
-            $validated['file_path'] = $destinationPath . $fileName;
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('uploads/jamaah', $fileName, 'public');
+
+            // Simpan data file baru
+            $validatedData['file_path'] = $path;
+            $validatedData['original_filename'] = $file->getClientOriginalName();
+            $validatedData['encrypted_filename'] = $fileName;
         }
 
-        $jamaah->update($validated);
+        // Update data jamaah
+        $jamaah->update($validatedData);
 
-        return redirect()->back()->with('success', 'Data berhasil diperbarui');
+        $validatedData['updated_at'] = Carbon::now();
+
+        return redirect()->back()->with('success', 'Data jamaah berhasil diperbarui');
     }
 
     /**

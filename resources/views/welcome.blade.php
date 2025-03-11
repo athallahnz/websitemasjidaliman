@@ -134,47 +134,42 @@
     </div>
 
     <div id="divisioncard" class="container my-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-        <div class="row">
-            <div class="col-md-3">
+        <div class="row g-3"> <!-- Gunakan g-3 untuk memberi jarak antar card di mobile -->
+            <div class="col-12 col-md-3">
                 <a href="{{ url('/') }}" style="text-decoration: none; color: inherit;">
-                    <div class="card division-card">
-                        <div
-                            style="width: 70px; height: 70px; background-color: #622200; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px;">
-                            <img src={{ Vite::asset('resources/images/masjid.svg') }}
-                                style="color: #fff; width: 43px; height: 43px;"></i>
+                    <div class="card division-card text-center p-3">
+                        <div class="icon-container">
+                            <img src="/images/masjid.svg" class="icon-image">
                         </div>
                         <h5 class="card-title">Kemasjidan</h5>
                     </div>
                 </a>
             </div>
-            <div class="col-md-3">
+            <div class="col-12 col-md-3">
                 <a href="{{ route('pendidikan') }}" target="_blank" style="text-decoration: none; color: inherit;">
-                    <div class="card division-card">
-                        <div
-                            style="width: 70px; height: 70px; background-color: #622200; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px;">
-                            <i class="bi bi-mortarboard" style="color: #fff; font-size: 30px;"></i>
+                    <div class="card division-card text-center p-3">
+                        <div class="icon-container">
+                            <i class="bi bi-mortarboard icon-style"></i>
                         </div>
                         <h5 class="card-title">Pendidikan</h5>
                     </div>
                 </a>
             </div>
-            <div class="col-md-3">
+            <div class="col-12 col-md-3">
                 <a href="https://example.com/sosial" target="_blank" style="text-decoration: none; color: inherit;">
-                    <div class="card division-card">
-                        <div
-                            style="width: 70px; height: 70px; background-color: #622200; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px;">
-                            <i class="bi bi-people" style="color: #fff; font-size: 30px;"></i>
+                    <div class="card division-card text-center p-3">
+                        <div class="icon-container">
+                            <i class="bi bi-people icon-style"></i>
                         </div>
                         <h5 class="card-title">Sosial</h5>
                     </div>
                 </a>
             </div>
-            <div class="col-md-3">
+            <div class="col-12 col-md-3">
                 <a href="https://example.com/usaha" target="_blank" style="text-decoration: none; color: inherit;">
-                    <div class="card division-card">
-                        <div
-                            style="width: 70px; height: 70px; background-color: #622200; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px;">
-                            <i class="bi bi-bank" style="color: #fff; font-size: 30px;"></i>
+                    <div class="card division-card text-center p-3">
+                        <div class="icon-container">
+                            <i class="bi bi-bank icon-style"></i>
                         </div>
                         <h5 class="card-title">Usaha</h5>
                     </div>
@@ -226,8 +221,7 @@
                     <div class="mt-4 row align-items-center">
                         <!-- Logo Bank -->
                         <div class="col-md-4 text-center">
-                            <img src="{{ Vite::asset('resources/images/logobsi.png') }}" alt="Logo Bank"
-                                class="img-fluid" style="max-width: 150px;">
+                            <img src="/images/logobsi.png" alt="Logo Bank" class="img-fluid" style="max-width: 150px;">
                         </div>
                         <!-- Informasi Rekening -->
                         <div class="col-md-8">
@@ -379,8 +373,8 @@
                         <div class="col">
                             <a href="#" class="logo text-decoration-none">
                                 <div class="d-flex">
-                                    <img class="img-fluid mb-4" src="{{ Vite::asset('resources/images/logo.png') }}"
-                                        alt="Bootstrap Logo" width="90">
+                                    <img class="img-fluid mb-4" src="/images/logo.png" alt="Bootstrap Logo"
+                                        width="90">
                                 </div>
                             </a>
                             <ul class="list-unstyled">
@@ -390,8 +384,8 @@
                                             <i class="bi bi-map"></i>
                                         </div>
                                         <div class="col">
-                                            <a>Jl. Sutorejo Tengah VIII No.12, Dukuh Sutorejo, Kec. Mulyorejo, Surabaya,
-                                                Jawa Timur 60113</a>
+                                            <a>JL. Sutorejo Tengah X/2-4 Dukuh Sutorejo - Mulyorejo, Surabaya, Jawa Timur
+                                                60113</a>
                                         </div>
                                     </div>
                                 </li>
@@ -401,7 +395,7 @@
                                             <i class="bi bi-telephone"></i>
                                         </div>
                                         <div class="col">
-                                            <a class="  " href="#">+62 85369369517</a>
+                                            <a>0853 6936 9517</a>
                                         </div>
                                     </div>
                                 </li>
@@ -411,7 +405,7 @@
                                             <i class="bi bi-envelope-paper-heart"></i>
                                         </div>
                                         <div class="col">
-                                            <a href="#">masjidalimansurabaya@gmail.com</a>
+                                            <a>masjidalimansurabaya@gmail.com</a>
                                         </div>
                                     </div>
                                 </li>
@@ -429,8 +423,8 @@
                                 <li class="mb-2"><a>Pesantrean Mahasiswa</a></li>
                                 <li class="mb-2"><a>Tadarus Al Qur'an</a></li>
                                 <li class="mb-2"><a>Syabab Rimayah Community Al Iman</a></li>
-                                <li class="mb-2"><a>Panitia Ramadhan 1445 H</a></li>
-                                <li class="mb-2"><a>Panitia Idul Adha 1445 H</a></li>
+                                <li class="mb-2"><a>Panitia Ramadhan 1446 H</a></li>
+                                <li class="mb-2"><a>Panitia Idul Adha 1446 H <strong>Coming Soon</strong></a></li>
                             </ul>
                         </div>
                         <div class="col">
@@ -450,8 +444,7 @@
     <div id="copyright" class="container-fluid py-3" style="background-color: #622200">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-xs-12 text-center" style="color: white;">Yayasan Masjid Al Iman Sutorejo Indah
-                    Surabaya | ©2024</div>
+                <div class="col-sm-12 col-xs-12 text-center" style="color: white;">© 2025 Yayasan Masjid Al Iman Sutorejo Indah Surabaya. All rights reserved</div>
             </div>
         </div>
     </div>
