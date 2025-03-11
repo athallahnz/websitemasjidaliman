@@ -45,8 +45,8 @@
                 {data: 'infaq_name', name: 'infaq_id'},
                 {data: 'file_path', name: 'file_path', render: function (data, type, full, meta) {
                     return data ?
-                        '<a href="' + '{{ asset('storage') }}/' + data + '" class="btn btn-link p-0" target="_blank">Lihat Bukti</a>'
-                        : 'Tidak ada bukti';
+                            '<a href="' + '{{ asset('storage') }}/' + data + '" class="btn btn-sm btn-outline-primary" target="_blank">Lihat Bukti</a>'
+                            : 'Tidak ada bukti';
                 }},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]

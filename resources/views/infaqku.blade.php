@@ -30,7 +30,9 @@
                             <td>{{ $jamaah->infaq_name }}</td>
                             <td>
                                 @if ($jamaah->file_path)
-                                    <a href="{{ asset('storage/' . $jamaah->file_path) }}" class="btn btn-link p-0">Lihat Bukti</a>
+                                <a href="{{ asset('storage/' . $jamaah->file_path) }}" class="btn btn-sm btn-outline-primary" target="_blank">
+                                    <i class="fas fa-file-alt"></i> Lihat Bukti
+                                </a>
                                 @else
                                     Tidak ada bukti
                                 @endif

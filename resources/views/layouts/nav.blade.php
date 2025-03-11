@@ -1,7 +1,7 @@
 <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ Vite::asset('resources/images/logo.png') }}" alt="Logo" width="62" height="62">
+            <img src="/images/logo.png" alt="Logo" width="62" height="62">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -18,35 +18,44 @@
 
                 <!-- Dashboard Infaq / Infaqku -->
                 <li class="nav-item">
-                    @if (Auth::check() && Auth::user()->hasRole('admin'))
-                        <a class="nav-link" href="{{ url('/home') }}">Dashboard Infaq</a>
-                    @else
-                        <a class="nav-link" href="{{ url('/infaqku') }}">Infaqku</a>
-                    @endif
+                    <a class="nav-link"
+                        href="{{ Auth::check() && Auth::user()->hasRole('admin') ? url('/home') : url('/infaqku') }}">
+                        {{ Auth::check() && Auth::user()->hasRole('admin') ? 'Dashboard Infaq' : 'Infaqku' }}
+                    </a>
                 </li>
 
                 <!-- Dashboard Kajian / Kajian -->
                 <li class="nav-item">
-                    @if (Auth::check() && Auth::user()->hasRole('admin'))
-                        <a class="nav-link" href="{{ url('/kajians') }}">Dashboard Kajian</a>
-                    @else
-                        <a class="nav-link" href="{{ url('user/kajians') }}">Kajian</a>
-                    @endif
+                    <a class="nav-link"
+                        href="{{ Auth::check() && Auth::user()->hasRole('admin') ? url('/kajians') : url('user/kajians') }}">
+                        {{ Auth::check() && Auth::user()->hasRole('admin') ? 'Dashboard Kajian' : 'Kajian' }}
+                    </a>
                 </li>
 
-                <!-- Dashboard Slideshow / Kegiatan -->
+                <!-- Dashboard Kegiatan / Kegiatan -->
                 <li class="nav-item">
-                    @if (Auth::check() && Auth::user()->hasRole('admin'))
+                    <a class="nav-link"
+                        href="{{ Auth::check() && Auth::user()->hasRole('admin') ? url('admin/kegiatan') : url('/kegiatan') }}">
+                        {{ Auth::check() && Auth::user()->hasRole('admin') ? 'Dashboard Kegiatan' : 'Kegiatan' }}
+                    </a>
+                </li>
+
+                <!-- Nav khusus admin untuk Dashboard Slideshow -->
+                @if (Auth::check() && Auth::user()->hasRole('admin'))
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url('/slideshow') }}">Dashboard Slideshow</a>
-                    @else
-                        <a class="nav-link" href="#">Kegiatan</a>
-                    @endif
+                    </li>
+                @endif
+
+                <!-- Menu Konsultasi -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/konsultasi') }}">Konsultasi</a>
                 </li>
 
                 <!-- Profil Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         Profil
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

@@ -23,21 +23,21 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        if(Auth::id())
-        {
+    // public function index()
+    // {
+    //     if(Auth::id())
+    //     {
 
-            $usertype=Auth()->user()->usertype;
+    //         $usertype=Auth()->user()->usertype;
 
-            if($usertype=='user')
-            {
-                return view('home');
-            }
-            else if ($usertype=='admin')
-            {
-                return view('admin.dashboard');
-            }
-        }
-    }
+    //         if($usertype=='user')
+    //         {
+    //             return view('home');
+    //         }
+    //         else if ($usertype=='admin')
+    //         {
+    //             return view('admin.dashboard');
+    //         }
+    //     }
+    // }
 }
