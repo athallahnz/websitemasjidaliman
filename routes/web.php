@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\Kegiatan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JamaahController;
+use App\Http\Controllers\AdminKegiatanController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\JadwalsholatController;
 use App\Http\Controllers\HomeuserController;
 use App\Http\Controllers\KajianController;
@@ -49,6 +52,9 @@ Route::group(['middleware' => ['role:admin']], function () {
     // Route CRUD Slideshow
     Route::resource('slideshow', SlideshowController::class);
 
+    Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+        Route::resource('kegiatan', AdminKegiatanController::class)->names('admin.kegiatan');
+    });
 });
 
 // User Routes (Requires User Role)
@@ -89,4 +95,11 @@ Route::post('/feedback', [FeedbackController::class, 'send'])->name('feedback.se
 // Bidang Pendidikan
 
 Route::get('/pendidikan', [BidangPendidikanController::class, 'index'])->name('pendidikan');
+
+Route::get('/kegiatan', [KegiatanController::class, 'index'])->name('kegiatan.index');
+Route::get('/kegiatan/{id}', [KegiatanController::class, 'show'])->name('kegiatan.show');
+
+Route::get('/konsultasi', function () {
+    return view('konsultasi');
+});
 
