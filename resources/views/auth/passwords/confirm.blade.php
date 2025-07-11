@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col p-4">
         <div class="text-center m-4">
-            <img src={{ Vite::asset('resources/images/logo.png')}} class="rounded-circle p-1"
+            <img src="/images/logo.png" class="rounded-circle p-1"
                     alt="" width="150" height="150">
         </div>
         <div>

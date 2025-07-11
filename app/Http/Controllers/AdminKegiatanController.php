@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Models\Kegiatan;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,8 @@ class AdminKegiatanController extends Controller
 
     public function create()
     {
-        return view('admin.kegiatan.create');
+        $kategoris = Kategori::all();
+        return view('admin.kegiatan.create', compact('kategoris'));
     }
 
     // Menyimpan data kegiatan baru
@@ -26,28 +28,34 @@ class AdminKegiatanController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
-            'kategori' => 'required|in:kajian,santunan,pembangunan,ramadhan', // Tambahkan "ramadhan"
+            'kategori_id' => 'required|exists:kategoris,id',
             'tanggal_kegiatan' => 'required|date',
             'link' => 'nullable|url',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
         ]);
 
-        $kegiatan = new Kegiatan();
-        $kegiatan->judul = $request->judul;
-        $kegiatan->deskripsi = $request->deskripsi;
-        $kegiatan->kategori = $request->kategori;
-        $kegiatan->tanggal_kegiatan = $request->tanggal_kegiatan;
-        $kegiatan->link = $request->link;
+        try {
+            $kegiatan = new Kegiatan();
+            $kegiatan->judul = $request->judul;
+            $kegiatan->deskripsi = $request->deskripsi;
+            $kegiatan->kategori_id = $request->kategori_id;
+            $kegiatan->tanggal_kegiatan = $request->tanggal_kegiatan;
+            $kegiatan->link = $request->link;
 
-        if ($request->hasFile('gambar')) {
-            $path = $request->file('gambar')->store('kegiatan', 'public');
-            $kegiatan->gambar = $path;
+            if ($request->hasFile('gambar')) {
+                $path = $request->file('gambar')->store('kegiatan', 'public');
+                $kegiatan->gambar = $path;
+            }
+
+            $kegiatan->save();
+
+            return redirect()->route('admin.kegiatan.index')->with('success', 'Kegiatan berhasil ditambahkan.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal menyimpan data: ' . $e->getMessage());
         }
-
-        $kegiatan->save();
-
-        return redirect()->route('admin.kegiatan.index')->with('success', 'Kegiatan berhasil ditambahkan.');
     }
+
+
 
     public function update(Request $request, $id)
     {
@@ -57,7 +65,7 @@ class AdminKegiatanController extends Controller
             'kategori' => 'required|in:kajian,santunan,pembangunan,ramadhan',
             'tanggal_kegiatan' => 'required|date',
             'link' => 'nullable|url',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
         ]);
 
         $kegiatan = Kegiatan::findOrFail($id);

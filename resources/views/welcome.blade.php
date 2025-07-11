@@ -5,7 +5,7 @@
         <div class="carousel-inner">
             @foreach ($slideshows as $slide)
                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                    <img src="/images/{{ $slide->image }}" alt="{{ $slide->title }}" class="d-block w-100">
+                    <img src="{{ asset('storage/' . $slide->image) }}" alt="{{ $slide->title }}" class="d-block w-100">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>{{ $slide->title }}</h5>
                         <p>{{ $slide->description }}</p>
@@ -444,10 +444,22 @@
     <div id="copyright" class="container-fluid py-3" style="background-color: #622200">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-xs-12 text-center" style="color: white;">© 2025 Yayasan Masjid Al Iman Sutorejo Indah Surabaya. All rights reserved</div>
+                <div class="col-sm-12 col-xs-12 text-center" style="color: white;">© 2025 Yayasan Masjid Al Iman Sutorejo
+                    Indah Surabaya. All rights reserved</div>
             </div>
         </div>
     </div>
+    
+    @if (request()->has('verified') && request('verified') == 1)
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Verifikasi Berhasil!',
+                text: 'Email Anda berhasil diverifikasi.',
+                confirmButtonColor: '#622200'
+            });
+        </script>
+    @endif
 @endsection
 @push('scripts')
     <script>

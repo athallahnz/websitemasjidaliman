@@ -9,8 +9,12 @@ class RoleSeeder extends Seeder
 {
     public function run()
     {
-        // Create the guest role
-        Role::create(['name' => 'guest']);
+        $roles = ['admin', 'guest', 'jamaah'];
+
+        foreach ($roles as $role) {
+            Role::firstOrCreate(
+                ['name' => $role, 'guard_name' => 'web']
+            );
+        }
     }
 }
-

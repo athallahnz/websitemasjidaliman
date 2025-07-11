@@ -19,4 +19,10 @@ class Kegiatan extends Model
         'tanggal_kegiatan', // Tambahkan tanggal kegiatan
         'link', // Tambahkan kolom link
     ];
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
+
 }

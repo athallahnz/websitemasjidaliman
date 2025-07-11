@@ -23,33 +23,48 @@ class KajianController extends Controller
         return view('kajians.create', compact('ustadzList', 'jeniskajianList'));
     }
 
-    public function store(Request $request)
-{
-    $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'youtube_link' => 'required|url',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        'start_time' => 'nullable|date',
-        'ustadz_id' => 'required|exists:ustadzs,id',
-        'jeniskajian_id' => 'required|exists:jeniskajians,id',
-    ]);
+    public function storeUstadz(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
 
-    $input = $request->all();
+        Ustadz::create([
+            'name' => $request->name,
+        ]);
 
-    if ($image = $request->file('image')) {
-        $destinationPath = 'images/';
-        $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        $image->move($destinationPath, $profileImage);
-        $input['image'] = "$profileImage";
+        Alert::success('Success', 'Ustadz berhasil ditambahkan!');
+
+        return redirect()->route('kajians.index');
     }
 
-    Kajian::create($input);
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'youtube_link' => 'required|url',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'start_time' => 'nullable|date',
+            'ustadz_id' => 'required|exists:ustadzs,id',
+            'jeniskajian_id' => 'required|exists:jeniskajians,id',
+        ]);
 
-    Alert::success('Success', 'Kajian created successfully.');
+        $input = $request->all();
 
-    return redirect()->route('kajians.index');
-}
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
+
+        Kajian::create($input);
+
+        Alert::success('Success', 'Kajian created successfully.');
+
+        return redirect()->route('kajians.index');
+    }
 
     public function show($id)
     {

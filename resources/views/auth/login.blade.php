@@ -36,9 +36,12 @@
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 500px; /* Menambah lebar pada form login */
-            max-width: 100%; /* Memastikan form tetap responsif */
-            z-index: 1; /* Menempatkan form di atas video */
+            width: 500px;
+            /* Menambah lebar pada form login */
+            max-width: 100%;
+            /* Memastikan form tetap responsif */
+            z-index: 1;
+            /* Menempatkan form di atas video */
             position: relative;
         }
 
@@ -50,16 +53,32 @@
             background-color: #622200;
         }
 
+        .custom-link {
+            text-decoration: none;
+            font-weight: bold;
+            color: #622200;
+            /* Sesuai dengan preferensi warna kamu */
+        }
+
+        .custom-link:hover {
+            color: #a34b00;
+            /* Warna sedikit lebih terang saat hover */
+        }
+
         /* Styling responsif untuk tablet dan mobile pada halaman login */
-        @media (max-width: 992px) {  /* Tablet */
+        @media (max-width: 992px) {
+
+            /* Tablet */
             #login-page .col-md-6 {
                 width: 90%;
             }
         }
 
-        @media (max-width: 768px) {  /* Mobile */
+        @media (max-width: 768px) {
+
+            /* Mobile */
             #login-page .col-md-6 {
-                width: 100%;
+                width: 75%;
             }
 
             #login-page .bg-white {
@@ -70,7 +89,8 @@
                 font-size: 16px;
             }
 
-            #login-page h2, #login-page h5 {
+            #login-page h2,
+            #login-page h5 {
                 font-size: 20px;
             }
 
@@ -97,7 +117,8 @@
     <div class="login-form-container col-md-6 col-lg-4 p-4 bg-white rounded shadow">
         <div class="text-center mb-4">
             <a href="{{ url('/') }}">
-                <img src="{{ Vite::asset('resources/images/logo.png') }}" href="{{ url('/') }}" class="rounded-circle p-1" alt="Logo" width="150" height="150">
+                <img src="/images/logo.png" href="{{ url('/') }}" class="rounded-circle p-1" alt="Logo"
+                    width="150" height="150">
             </a>
         </div>
         <div>
@@ -109,10 +130,12 @@
             @csrf
             <div class="mt-4">
                 <div class="mb-3">
-                    <input type="text" name="email" placeholder="Enter Your Email or Phone" class="form-control" required>
+                    <input type="text" name="email" placeholder="Enter Your Email or Phone" class="form-control"
+                        required>
                 </div>
                 <div class="mb-3">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Enter Your Password">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                        name="password" required autocomplete="current-password" placeholder="Enter Your Password">
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -123,7 +146,8 @@
                 <div class="row mb-4">
                     <div class="col-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                {{ old('remember') ? 'checked' : '' }}>
                             <label class="form-check-label" for="remember">
                                 {{ __('Remember Me') }}
                             </label>
@@ -131,7 +155,8 @@
                     </div>
                     <div class="col-6 text-end">
                         @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+                            <a href="{{ route('password.request') }}"
+                                class="custom-link">{{ __('Forgot Your Password?') }}</a>
                         @endif
                     </div>
                 </div>
@@ -146,10 +171,33 @@
 
         <div class="row mt-3">
             <div class="text-center">
-                <p>Jamaah Baru di Al Iman? <a href="{{ route('register') }}">Daftar Jamaah</a></p>
+                <p>Jamaah Baru di Al Iman?
+                    <a href="{{ route('register') }}" class="custom-link">Daftar Jamaah</a>
+                </p>
             </div>
         </div>
     </div>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses!',
+                text: "{{ session('success') }}",
+                confirmButtonColor: '#622200'
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Login Gagal!',
+                text: "{{ session('error') }}",
+                confirmButtonColor: '#622200'
+            });
+        </script>
+    @endif
 
 </body>
 
