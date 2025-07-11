@@ -6,21 +6,24 @@
 
         <!-- Filter Buttons -->
         <div class="text-center filter-buttons">
-            <button class="btn btn-outline-custom filter-btn active" data-filter="all">Semua</button>
-            <button class="btn btn-outline-custom filter-btn" data-filter="kajian">Kajian</button>
-            <button class="btn btn-outline-custom filter-btn" data-filter="santunan">Santunan</button>
-            <button class="btn btn-outline-custom filter-btn" data-filter="pembangunan">Pembangunan</button>
-            <button class="btn btn-outline-custom filter-btn" data-filter="ramadhan">Ramadhan</button>
+            <button class="btn btn-outline-custom filter-btn active mt-2" data-filter="all">Semua</button>
+            @foreach ($kategoris as $kategori)
+                <button class="btn btn-outline-custom filter-btn mt-2" data-filter="{{ $kategori->id }}">
+                    {{ ucfirst($kategori->nama) }}
+                </button>
+            @endforeach
         </div>
+
 
         <!-- Data Kegiatan -->
         <div class="row" id="kegiatan-container">
             @foreach ($kegiatans as $kegiatan)
-                <div class="col-md-4 mb-4 kegiatan-item" data-category="{{ $kegiatan->kategori }}" data-aos="fade-in"
+                <div class="col-md-4 mb-4 kegiatan-item" data-category="{{ $kegiatan->kategori->id }}" data-aos="fade-in"
                     data-aos-duration="800">
                     <div class="card">
-                        <img src="{{ asset('storage/' . $kegiatan->gambar) }}" class="card-img-top img-fluid"
-                            alt="{{ $kegiatan->judul }}" style="width: 100%; height: 250px; object-fit: cover;">
+                        <img src="{{ $kegiatan->gambar ? asset('storage/' . $kegiatan->gambar) : asset('images/default.jpg') }}"
+                            class="card-img-top img-fluid" alt="{{ $kegiatan->judul }}"
+                            style="width: 100%; height: 250px; object-fit: cover;">
                         <div class="card-body">
                             <h5 class="card-title">{{ $kegiatan->judul }}</h5>
                             <p class="card-text">{{ Str::limit($kegiatan->deskripsi, 100) }}</p>

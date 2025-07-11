@@ -53,6 +53,18 @@
             background-color: #622200;
         }
 
+        .custom-link {
+            text-decoration: none;
+            font-weight: bold;
+            color: #622200;
+            /* Sesuai dengan preferensi warna kamu */
+        }
+
+        .custom-link:hover {
+            color: #a34b00;
+            /* Warna sedikit lebih terang saat hover */
+        }
+
         /* Styling responsif untuk tablet dan mobile pada halaman register */
         @media (max-width: 992px) {
 
@@ -66,7 +78,7 @@
 
             /* Mobile */
             #register-page .col-md-6 {
-                width: 100%;
+                width: 75%;
             }
 
             #register-page .bg-white {
@@ -105,7 +117,7 @@
     <div class="register-form-container col-md-6 col-lg-4 p-4 bg-white rounded shadow">
         <div class="text-center mb-4">
             <a href="{{ url('/') }}">
-                <img src="{{ Vite::asset('resources/images/logo.png') }}" class="rounded-circle p-1" alt="Logo" width="150" height="150">
+                <img src="/images/logo.png" class="rounded-circle p-1" alt="Logo" width="150" height="150">
             </a>
         </div>
         <div>
@@ -170,7 +182,7 @@
 
                 <div class="row mt-3">
                     <div class="text-center">
-                        <p>Sudah punya akun? <a href="{{ route('login') }}">Log in disini</a></p>
+                        <p>Sudah punya akun? <a class="custom-link" href="{{ route('login') }}">Log in disini</a></p>
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@
         <div class="card-body d-flex flex-wrap align-items-start">
             <div class="image-container text-center mb-3 me-3">
                 @if($kajian->image)
-                    <img src="/images/{{ $kajian->image }}" class="img-fluid rounded" alt="{{ $kajian->title }}" style="width: 300px; height: 300px; object-fit: cover;">
+                    <img src="{{ asset('images/' . $kajian->image) }}" class="img-fluid rounded" alt="{{ $kajian->title }}" style="width: 300px; height: 300px; object-fit: cover;">
                 @else
                     <div class="no-image bg-light d-flex justify-content-center align-items-center rounded" style="width: 300px; height: 300px;">
                         <span class="text-muted">No Image Available</span>

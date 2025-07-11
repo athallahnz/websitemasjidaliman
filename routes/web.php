@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JamaahController;
 use App\Http\Controllers\AdminKegiatanController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\JadwalsholatController;
 use App\Http\Controllers\HomeuserController;
 use App\Http\Controllers\KajianController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\SlideshowController;
 use App\Http\Controllers\BidangPendidikanController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\VerifyEmailController;
 
 Route::get('/storage-link', function(){
     Artisan::call('storage:link');
@@ -24,6 +26,11 @@ Route::get('/storage-link', function(){
 // Authentication Routes
 Auth::routes();
 
+Route::middleware('auth')->group(function () {
+    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
+        ->middleware(['signed', 'throttle:6,1'])
+        ->name('verification.verify');
+});
 // Landing Page Route (Accessible by Guests)
 Route::get('/', [GuestController::class, 'index'])->name('welcome');
 
@@ -54,6 +61,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::resource('kegiatan', AdminKegiatanController::class)->names('admin.kegiatan');
+        Route::resource('kategoris', KategoriController::class);
     });
 });
 
@@ -83,6 +91,7 @@ Route::post('/sholat/jadwal', [JadwalsholatController::class, 'getJadwalSholat']
 
 // Kajian Routes (Accessible by All Authenticated Users)
 Route::resource('kajians', KajianController::class);
+Route::post('/ustadzs/store', [KajianController::class, 'storeUstadz'])->name('ustadzs.store');
 
 // User Kajian Routes (View Kajian for Users)
 Route::get('user/kajians', [UserKajianController::class, 'index'])->name('user.kajians.index');

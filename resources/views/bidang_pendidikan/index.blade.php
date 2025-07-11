@@ -221,9 +221,7 @@
                                 <div class="col-md-6">
                                     <a href="#" class="logo text-decoration-none">
                                         <div class="d-flex align-items-start">
-                                            <img class="img-fluid mb-4"
-                                                src="{{ Vite::asset('resources/images/logo.png') }}" alt="Logo Al Iman"
-                                                width="90">
+                                            <img class="img-fluid mb-4" src="{{ asset('images/logo.png') }}" alt="Logo Al Iman" width="90">
                                         </div>
                                     </a>
                                     <ul class="list-unstyled">
@@ -356,7 +354,7 @@
         setTimeout(function () {
             var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
             myModal.show();
-        }, 1500);  
+        }, 1500);
     });
 
         // Javascript Animation AOS

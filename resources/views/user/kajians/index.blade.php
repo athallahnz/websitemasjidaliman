@@ -12,7 +12,7 @@
                         <td style="width: 100px;">
                             @if($kajian->image)
                                 <a href="{{ $kajian->youtube_link }}" target="_blank">
-                                    <img src="/images/{{ $kajian->image }}" alt="{{ $kajian->title }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+                                    <img src="{{ asset('images/' . $kajian->image) }}" alt="{{ $kajian->title }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
                                 </a>
                             @else
                                 <span class="text-muted">No Image</span>

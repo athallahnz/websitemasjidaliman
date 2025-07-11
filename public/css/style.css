@@ -364,6 +364,14 @@
 }
 
 /* Navbar background */
+.navbar-collapse {
+    transition: height 0.3s ease;
+}
+
+.navbar-collapse.show {
+    display: block !important;
+}
+
 .navbar {
     background-color: #ffffff; /* Warna latar belakang navbar putih */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Efek bayangan */

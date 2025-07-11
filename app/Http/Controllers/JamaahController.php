@@ -63,10 +63,22 @@ class JamaahController extends Controller
             return DataTables::of($query)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="' . route('infaq.show', $row->id) . '" class="btn btn-outline-dark btn-sm me-2" title="View"><i class="bi bi-person-lines-fill"></i></a>';
-                    $actionBtn .= '<a href="' . route('infaq.edit', $row->id) . '" class="btn btn-outline-dark btn-sm me-2" title="Edit"><i class="bi bi-pencil-square"></i></a>';
-                    $actionBtn .= '<form action="' . route('infaq.destroy', $row->id) . '" method="POST" style="display:inline;">' . csrf_field() . method_field('DELETE') . '<button type="submit" class="btn btn-outline-dark btn-sm" title="Delete"><i class="bi bi-trash"></i></button></form>';
-                    return $actionBtn;
+                    return '
+                        <div class="d-flex gap-2">
+                            <a href="' . route('infaq.show', $row->id) . '" class="btn btn-outline-dark btn-sm" title="View">
+                                <i class="bi bi-person-lines-fill"></i>
+                            </a>
+                            <a href="' . route('infaq.edit', $row->id) . '" class="btn btn-outline-primary btn-sm" title="Edit">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <form action="' . route('infaq.destroy', $row->id) . '" method="POST" onsubmit="return confirm(\'Apakah Anda yakin ingin menghapus data ini?\')">
+                                ' . csrf_field() . method_field('DELETE') . '
+                                <button type="submit" class="btn btn-outline-danger btn-sm" title="Delete">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    ';
                 })
                 ->rawColumns(['action'])
                 ->make(true);

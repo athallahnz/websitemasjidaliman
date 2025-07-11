@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -65,7 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user= User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'nomor' => $data['nomor'], // Simpan nomor telepon ke database
