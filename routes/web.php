@@ -18,7 +18,7 @@ use App\Http\Controllers\BidangPendidikanController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
-Route::get('/storage-link', function(){
+Route::get('/storage-link', function () {
     Artisan::call('storage:link');
     return 'Storage linked successfully.';
 });
@@ -101,9 +101,6 @@ Route::get('user/kajians/{kajian}', [UserKajianController::class, 'show'])->name
 Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
 Route::post('/feedback', [FeedbackController::class, 'send'])->name('feedback.send');
 
-// Bidang Pendidikan
-
-Route::get('/pendidikan', [BidangPendidikanController::class, 'index'])->name('pendidikan');
 
 Route::get('/kegiatan', [KegiatanController::class, 'index'])->name('kegiatan.index');
 Route::get('/kegiatan/{id}', [KegiatanController::class, 'show'])->name('kegiatan.show');
@@ -112,3 +109,98 @@ Route::get('/konsultasi', function () {
     return view('konsultasi');
 });
 
+// Bidang Pendidikan
+Route::get('/pendidikan', [BidangPendidikanController::class, 'index'])->name('pendidikan');
+
+// Tambahkan prefix group untuk mempermudah, misalnya 'pendidikan'
+Route::prefix('pendidikan')->name('pendidikan.')->group(function () {
+
+    // Rute TENTANG KAMI (about_us)
+    // URL yang unik: tentang-kami/index, tentang-kami/visi-misi, dst.
+    Route::get('tentang-kami', function () {
+        return view('bidang_pendidikan.about_us.index');
+    })->name('about_us.index');
+
+    Route::get('tentang-kami/visi-misi', function () {
+        return view('bidang_pendidikan.about_us.vision');
+    })->name('about_us.vision');
+
+    Route::get('tentang-kami/fasilitas', function () {
+        return view('bidang_pendidikan.about_us.facility');
+    })->name('about_us.facility');
+
+    Route::get('tentang-kami/guru-staff', function () {
+        return view('bidang_pendidikan.about_us.staff');
+    })->name('about_us.staff');
+
+    // ----------------------------------------------------------------------
+    // Rute PROGRAM (Sekarang menggunakan URL unik)
+    // ----------------------------------------------------------------------
+    Route::get('program', function () {
+        return view('bidang_pendidikan.program.index');
+    })->name('program.index'); // Program Utama
+
+    Route::get('program/tpq', function () { // URL: /pendidikan/program/tpq
+        return view('bidang_pendidikan.program.tpq');
+    })->name('program.tpq');
+
+    Route::get('program/daycare', function () { // URL: /pendidikan/program/daycare
+        return view('bidang_pendidikan.program.daycare');
+    })->name('program.daycare');
+
+    Route::get('program/kelompok-bermain', function () { // URL: /pendidikan/program/kelompok-bermain
+        return view('bidang_pendidikan.program.kb');
+    })->name('program.kb');
+
+    Route::get('program/taman-kanak-kanak', function () { // URL: /pendidikan/program/taman-kanak-kanak
+        return view('bidang_pendidikan.program.tk');
+    })->name('program.tk');
+
+    // ----------------------------------------------------------------------
+    // Rute PENDAFTARAN (Sekarang menggunakan URL unik)
+    // ----------------------------------------------------------------------
+    Route::get('pendaftaran', function () {
+        return view('bidang_pendidikan.registration.index');
+    })->name('registration.index'); // Pendaftaran Utama
+
+    Route::get('pendaftaran/prosedur', function () { // URL: /pendidikan/pendaftaran/prosedur
+        return view('bidang_pendidikan.registration.procedure');
+    })->name('registration.procedure');
+
+    Route::get('pendaftaran/online', function () { // Tambahkan rute untuk "Pendaftaran Online"
+        return view('bidang_pendidikan.registration.online'); // Perlu buat file Blade ini
+    })->name('registration.online');
+
+    Route::get('pendaftaran/info-selengkapnya', function () { // URL: /pendidikan/pendaftaran/info-selengkapnya
+        return view('bidang_pendidikan.registration.info');
+    })->name('registration.info');
+
+    // ----------------------------------------------------------------------
+    // Rute UNTUK ORANG TUA (Sekarang menggunakan URL unik)
+    // ----------------------------------------------------------------------
+    Route::get('orang-tua', function () {
+        return view('bidang_pendidikan.for_parent.index');
+    })->name('for_parent.index'); // Orang Tua Utama
+
+    Route::get('orang-tua/proteksi-anak', function () { // URL: /pendidikan/orang-tua/proteksi-anak
+        return view('bidang_pendidikan.for_parent.protection');
+    })->name('for_parent.protection');
+
+    Route::get('orang-tua/saran-masukan', function () { // URL: /pendidikan/orang-tua/saran-masukan
+        return view('bidang_pendidikan.for_parent.feedback');
+    })->name('for_parent.feedback');
+
+    // ----------------------------------------------------------------------
+    // Rute Non-Dropdown
+    // ----------------------------------------------------------------------
+
+    // Rute BERITA
+    Route::get('berita', function () {
+        return view('bidang_pendidikan.news.index');
+    })->name('news.index');
+
+    // Rute KONTAK
+    Route::get('kontak', function () {
+        return view('bidang_pendidikan.contact.index');
+    })->name('contact.index');
+});

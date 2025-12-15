@@ -1,42 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-5">
-        <div class="card shadow-sm border-0">
-            <div class="card-body">
-                <h2 class="fw-bold text-center mb-4">Daftar Infaq Jamaah</h2>
+    <div class="container page-offset">
+        <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+            <div class="card-body p-4">
+
+                <div
+                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+                    <div>
+                        <h2 class="h4 fw-bold mb-1">Infaq Jamaah</h2>
+                        <div class="text-muted small">Monitoring data infaq yang masuk beserta bukti transfer.</div>
+                    </div>
+                </div>
+
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped bg-white yajra-datatable">
-                        <thead style="background-color: #8e4c28; color: white;">
+                    <table class="table table-hover align-middle mb-0 yajra-datatable">
+                        <thead class="table-head-brown">
                             <tr>
-                                <th scope="col">No.</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">No.Tlp</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col">Nominal Infaq</th>
-                                <th scope="col">Tujuan Infaq</th>
-                                <th scope="col">Bukti Transfer</th>
-                                <th scope="col" style="width: 200px;">Action</th>
+                                <th style="width:60px;">No</th>
+                                <th>Nama</th>
+                                <th style="width:140px;">No. Tlp</th>
+                                <th>Alamat</th>
+                                <th style="width:160px;">Nominal</th>
+                                <th style="width:180px;">Tujuan</th>
+                                <th style="width:140px;">Bukti</th>
+                                <th style="width:160px;" class="text-end">Action</th>
                             </tr>
                         </thead>
-                        <tbody style="background-color: #f5e9e1;">
-                            <!-- DataTables will populate this -->
-                        </tbody>
+                        <tbody class="table-body-soft"></tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </div>
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-
     <script>
-        $(document).ready(function() {
-            var table = $('.yajra-datatable').DataTable({
+        document.addEventListener('DOMContentLoaded', function() {
+            $('.yajra-datatable').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('jamaah.index') }}",
@@ -69,11 +72,17 @@
                     {
                         data: 'file_path',
                         name: 'file_path',
-                        render: function(data, type, full, meta) {
-                            return data ?
-                                '<a href="{{ asset('storage') }}/' + data +
-                                '" class="btn btn-sm btn-outline-primary" target="_blank" style="white-space: nowrap;">Lihat Bukti</a>' :
-                                '<span style="white-space: nowrap;">Tidak ada bukti</span>';
+                        orderable: false,
+                        searchable: false,
+                        render: function(data) {
+                            if (!data) return '<span class="text-muted">-</span>';
+                            return `
+                                <a href="{{ asset('storage') }}/${data}"
+                                   class="btn btn-sm btn-outline-primary"
+                                   target="_blank" rel="noopener"
+                                   style="white-space:nowrap;">
+                                   Lihat Bukti
+                                </a>`;
                         }
                     },
                     {

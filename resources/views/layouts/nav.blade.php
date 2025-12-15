@@ -1,10 +1,10 @@
-<nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow">
+<nav class="navbar navbar-expand-md navbar-light navbar-floating">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="/images/logo.png" alt="Logo" width="62" height="62">
+            <img src="/images/logo.png" alt="Logo">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -52,23 +52,23 @@
                     <a class="nav-link" href="{{ url('/konsultasi') }}">Konsultasi</a>
                 </li>
 
-                <!-- Profil Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                <li class="nav-item dropdown hover-dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Profil
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    <ul class="dropdown-menu dropdown-menu-pill" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="#">
-                                Sejarah
+                            <a class="dropdown-item dropdown-item-pill" href="#">
+                                <i class="bi bi-clock-history me-2"></i>Sejarah Masjid
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item"
+                            <a class="dropdown-item dropdown-item-pill"
                                 href="https://drive.google.com/file/d/1mlKAQmGScW1LiuNoznt4NKvKXQBRfe-a/view?usp=sharing"
                                 target="_blank">
-                                Struktur Organisasi
+                                <i class="bi bi-diagram-3 me-2"></i>Struktur Organisasi
                             </a>
                         </li>
                     </ul>
@@ -92,19 +92,22 @@
                         </li>
                     @endif
                 @else
-                    <li class="nav-item dropdown px-3">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                    <li class="nav-item dropdown hover-dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center gap-2"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i>
+                            <span>{{ Auth::user()->name }}</span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                        <ul class="dropdown-menu dropdown-menu-pill dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="dropdown-item dropdown-item-pill" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    <i class="bi bi-box-arrow-right me-1"></i> Logout
                                 </a>
                             </li>
                         </ul>
+
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>

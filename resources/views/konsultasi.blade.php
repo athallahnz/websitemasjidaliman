@@ -16,9 +16,10 @@
             </div>
         </div>
     </div>
-    <div>
-        <!-- Konten utama di sini -->
-        <iframe src="https://konsultasisyariah.net" width="100%" height="800px" style="border:none;"></iframe>
+
+    <div class="w-100" style="height: calc(100vh - 70px);">
+        <iframe src="https://konsultasisyariah.net" class="w-100 h-100 border-0">
+        </iframe>
     </div>
 @endsection
 @push('scripts')

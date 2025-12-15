@@ -1,549 +1,1137 @@
-.page-pendidikan {
-    font-family: "Quicksand", sans-serif;
-
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    }
-
-    .navbar-collapse {
-        display: none;
-    }
-
-    .navbar-toggler:hover + .navbar-collapse {
-        display: block;
-    }
-
-    .navbar-toggler:focus + .navbar-collapse {
-        display: block;
-    }
-
-    .nav-item .dropdown-menu {
-        display: none;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .nav-item.dropdown:hover .dropdown-menu {
-        display: block;
-        animation: slideDown 0.3s ease;
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .navbar-nav {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .nav-item {
-        margin: 0 15px;
-        text-transform: uppercase;
-    }
-
-    .navbar-nav .nav-link {
-        color: #ffffff !important;
-    }
-
-    .navbar-nav .nav-link:hover {
-        color: #ffd700 !important;
-    }
-
-    .nav-item.dropdown:hover .dropdown-menu {
-        display: block;
-    }
-
-    .dropdown-menu {
-        background-color: #622200;
-        border: none;
-        border-radius: 0;
-        padding: 0;
-        margin: 0;
-        box-shadow: none;
-    }
-
-    .dropdown-item {
-        padding: 10px 12px;
-    }
-
-    .dropdown-menu .dropdown-item {
-        color: white;
-        background-color: #622200;
-    }
-
-    .dropdown-menu .dropdown-item:hover {
-        background-color: #622200;
-        color: #ffd700;
-    }
-
-    .nav-item.dropdown .dropdown-menu {
-        display: none;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .nav-item.dropdown:hover .dropdown-menu {
-        display: block;
-        opacity: 1;
-    }
-
-    .nav-item.dropdown {
-        position: relative;
-    }
-
-    .header-banner {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: white;
-    }
-
-    .video-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
-    }
-
-    .header-content {
-        position: relative;
-        z-index: 1;
-    }
-
-    .h1.header-title {
-        font-size: 4rem;
-        font-weight: bold;
-        margin-bottom: 10px;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    }
-
-    .h3.header-title {
-        font-size: 2.5rem;
-        font-weight: bold;
-        margin-bottom: 10px;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    }
-
-    .header-buttons .btn {
-        margin: 10px;
-        padding: 10px 20px;
-        font-size: 1.2rem;
-        border-radius: 10px;
-    }
-
-    .header-buttons .btn-primary {
-        background-color: #ffd700;
-        border: none;
-        color: #622200;
-    }
-
-    .header-buttons .btn-primary:hover {
-        background-color: white;
-        color: #622200;
-    }
-
-    .header-buttons .btn-secondary {
-        background-color: #622200;
-        border: none;
-    }
-
-    .header-buttons .btn-secondary:hover {
-        background-color: white;
-        color: #622200;
-    }
-
-    .img-original {
-        max-width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .stats-section {
-        background-color: #fbc02d;
-    }
-
-    .stats-section h1 {
-        font-size: 4rem;
-        margin-bottom: 10px;
-    }
-
-    .stats-section p {
-        font-size: 1.25rem;
-    }
-
-    .card {
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .card-img-top {
-        height: 200px;
-        object-fit: cover;
-    }
-
-    .card-body {
-        padding: 20px;
-        text-align: center;
-    }
-
-    .card-title {
-        font-size: 1.25rem;
-        color: #622200;
-        margin-bottom: 15px;
-    }
-
-    .card-text {
-        font-size: 0.95rem;
-        color: #555;
-    }
-
-    .card .btn {
-        background-color: #622200;
-        border-color: #622200;
-        color: #fff;
-        padding: 10px 20px;
-        margin-top: 10px;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
-    }
-
-    .card .btn:hover {
-        background-color: #ffd700;
-        border-color: #ffd700;
-    }
-
-    #pendaftaran {
-        padding: 50px 0;
-        text-align: center;
-    }
-
-    #pendaftaran .btn {
-        background-color: #622200;
-        border-color: #622200;
-        padding: 15px 30px;
-        transition: background-color 0.3s ease;
-    }
-
-    #pendaftaran .btn:hover {
-        background-color: #ffd700;
-        border-color: #ffd700;
-    }
-
-    .text-center {
-        text-align: center;
-    }
-
-    .my-5 {
-        margin: 50px 0;
-    }
-
-    .mb-4 {
-        margin-bottom: 1.5rem;
-    }
-
-    #profil,
-    #pendaftaran {
-        padding: 60px 0;
-    }
-
-    footer {
-        background-color: #622200;
-        color: #fff;
-        padding: 20px 0;
-        text-align: center;
-    }
-
-    /* Tablet & Mobile Styles */
-    @media (max-width: 768px) {
-        .navbar-nav {
-            flex-direction: column; /* Stack navbar items vertically */
-            text-align: center; /* Center align navbar items */
-        }
-
-        .header-title {
-            font-size: 3rem;
-        }
-
-        .header-buttons .btn {
-            font-size: 1rem;
-            padding: 8px 15px;
-        }
-
-        .card-title {
-            font-size: 1rem;
-        }
-
-        .card-body {
-            padding: 15px;
-        }
-
-        .stats-section h1 {
-            font-size: 2.5rem;
-        }
-
-        .stats-section p {
-            font-size: 1rem;
-        }
-
-        .navbar-collapse {
-            display: block;
-        }
-
-        .dropdown-menu {
-            width: 100%;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .img-original {
-            max-width: 90%; /* Ensure images fit properly */
-        }
-
-        .text-center {
-            padding: 0 15px;
-        }
-    }
-
-    /* Mobile Styles */
-    @media (max-width: 576px) {
-        .header-title {
-            font-size: 2.5rem;
-        }
-
-        .header-buttons .btn {
-            font-size: 1rem;
-            padding: 8px 15px;
-        }
-
-        .card-title {
-            font-size: 1rem;
-        }
-
-        .navbar-toggler {
-            padding: 5px 10px;
-        }
-
-        .card-body {
-            padding: 12px;
-        }
-
-        .stats-section h1 {
-            font-size: 2rem;
-        }
-
-        .stats-section p {
-            font-size: 0.875rem;
-        }
+/* =========================================================
+   🧱 FOUNDATION
+   ========================================================= */
+:root {
+    --brand-brown: #622200;
+    --brand-brown-light: #854321;
+    --brand-accent: #ffc107;
+
+    --navbar-offset: 110px;
+
+    --text-dark: #222;
+    --text-light: #fff;
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.18);
+    --shadow-lg: 0 12px 26px rgba(0, 0, 0, 0.12);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-pill: 999px;
+
+    --section-y: 64px;
+}
+
+@media (max-width: 767.98px) {
+    :root {
+        --section-y: 48px;
     }
 }
 
-/* Navbar background */
-.navbar-collapse {
-    transition: height 0.3s ease;
+/* Offset konten untuk halaman selain welcome */
+body.page-offset main {
+    padding-top: var(--navbar-offset);
 }
 
-.navbar-collapse.show {
-    display: block !important;
+@media (max-width: 768px) {
+    :root {
+        --navbar-offset: 96px;
+    }
 }
 
-.navbar {
-    background-color: #ffffff; /* Warna latar belakang navbar putih */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Efek bayangan */
-}
-
-/* Styling navbar items */
-.navbar-nav {
-    justify-content: center; /* Membuat item rata tengah */
-    width: 100%; /* Memastikan navbar mencakup seluruh lebar */
-}
-
-.nav-item {
-    margin: 0 15px; /* Jarak horizontal antar item */
-    text-transform: uppercase; /* Huruf kapital pada teks */
-}
-
-.nav-link {
-    white-space: nowrap; /* Mencegah teks membungkus */
-}
-
-/* Styling link di navbar */
-.navbar-nav .nav-link {
-    color: #622200 !important; /* Warna teks navbar */
-}
-
-.navbar-nav .nav-link:hover {
-    color: #a36231 !important; /* Warna teks saat hover */
-    transition: color 0.3s ease; /* Efek transisi warna */
-}
-
-/* Dropdown styling */
-.nav-item .dropdown-menu {
-    display: none;
-    opacity: 0;
-    transform: translateY(20px); /* Tersembunyi di atas */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Animasi transisi */
-    border: none; /* Menghilangkan border */
-    border-radius: 0; /* Tidak ada radius */
-    padding: 0;
-    margin: 0;
-}
-
-.nav-item.dropdown:hover .dropdown-menu {
-    display: block; /* Tampilkan menu */
-    opacity: 1;
-    transform: translateY(0); /* Posisi normal */
-}
-
-/* Background dan border dropdown */
-.dropdown-menu {
-    background-color: #ffffff; /* Latar belakang dropdown */
-    border: none; /* Menghilangkan border */
-    border-radius: 0; /* Tidak ada radius */
-    padding: 0;
-    margin: 0;
-}
-
-/* Dropdown item styling */
-.dropdown-menu .dropdown-item {
-    color: #622200; /* Warna teks default di dropdown */
-    padding: 10px 12px; /* Padding item dropdown */
-}
-
-.dropdown-menu .dropdown-item:hover {
-    background-color: white; /* Warna latar belakang saat hover */
-    color: #a36231; /* Warna teks saat hover */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Efek transisi */
-}
-
-/* Right side navbar (rata kanan) */
-.navbar-nav.ms-auto {
-    justify-content: flex-end; /* Posisi item ke kanan */
-}
-
-/* Left side navbar (rata tengah) */
-.navbar-nav.mx-auto {
-    display: flex;
-    justify-content: center; /* Rata tengah */
+/* Reset dasar biar tidak ada ruang putih aneh */
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
     width: 100%;
+    height: 100%;
+    background: #fff; /* atau ganti ke warna terakhir halaman jika mau */
 }
 
-/* Posisi dropdown agar muncul di atas */
-.nav-item.dropdown {
+body {
+    overflow-x: hidden; /* cegah scroll horizontal yang bikin area putih */
+}
+
+/* Pastikan elemen terakhir tidak punya margin bawah bawaan */
+footer {
+    margin-bottom: 0 !important;
+}
+
+/* Kadang SVG wave bikin 1-3px gap karena baseline */
+.wave,
+.wave-reverse {
+    display: block;
+    line-height: 0;
+}
+.wave svg,
+.wave-reverse svg {
+    display: block;
+}
+
+/* =========================================================
+   🧰 UTILITIES
+   ========================================================= */
+.text-brown {
+    color: var(--brand-brown) !important;
+}
+.bg-brown {
+    background-color: var(--brand-brown) !important;
+}
+.bg-brown-light {
+    background-color: var(--brand-brown-light) !important;
+}
+.bg-brown-gradient {
+    background: linear-gradient(
+        135deg,
+        var(--brand-brown) 0%,
+        var(--brand-brown-light) 100%
+    );
+}
+
+.section {
+    padding-top: var(--section-y);
+    padding-bottom: var(--section-y);
+}
+
+.section-heading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    color: var(--text-dark);
+}
+
+.divider {
+    width: 80px;
+    height: 4px;
+    background: var(--brand-accent);
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Glass */
+.glass {
     position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--radius-md);
 }
 
-/* Efek transisi untuk hover */
-.nav-item.dropdown .dropdown-menu {
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth dropdown */
+.glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0.1) 38%,
+        rgba(255, 255, 255, 0.06) 60%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.06);
 }
 
-.carousel-item img {
-    width: 100%;
-    height: auto; /* Ensure responsive images */
+.glass > * {
+    position: relative;
+    z-index: 1;
 }
 
+.lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Glass input */
+.glass-input {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: box-shadow 0.25s ease;
+}
+.glass-input::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.06) 40%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+    z-index: 0;
+}
+.glass-input:hover {
+    box-shadow: var(--shadow-lg);
+}
+.glass-input input,
+.glass-input button {
+    position: relative;
+    z-index: 1;
+}
+.glass-input .form-control {
+    background: transparent !important;
+    color: #fff;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+.glass-input .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+.glass-input .btn {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.06) 40%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    transition: background-color 0.18s ease, color 0.18s ease,
+        border-color 0.18s ease;
+}
+.glass-input .btn:hover,
+.glass-input .btn:focus {
+    background: #ffffff !important;
+    color: var(--brand-brown) !important;
+    border-left-color: rgba(98, 34, 0, 0.12) !important;
+}
+
+/* Jadwal sholat */
+.pray-times {
+    display: grid;
+    gap: 0.25rem;
+}
+.pray-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.35rem 0.5rem;
+    border-radius: 0.5rem;
+}
+.pray-item dt {
+    margin: 0;
+    font-weight: 600;
+}
+.pray-item dd {
+    margin: 0;
+}
+#jadwalsholat .badge {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.5rem;
+}
 #jadwalsholat .list-group-item {
     border: none;
     background-color: transparent;
 }
 
-
-#divisioncard .division-card {
-    text-align: center;
-    border: none;
-    transition: transform 0.2s;
+/* Wave */
+.wave,
+.wave-reverse {
+    display: block;
+    line-height: 0;
+}
+.wave {
+    background-color: var(--brand-brown-light);
+}
+.wave-reverse {
+    background-color: var(--brand-brown);
 }
 
-#divisioncard .division-card:hover {
+/* Shimmer */
+.shimmer {
+    position: relative;
+    overflow: hidden;
+}
+.shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+    animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Simple animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-fadein {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* =========================================================
+   🎠 CAROUSEL
+   ========================================================= */
+.carousel-item {
+    position: relative;
+    overflow: hidden;
+}
+.carousel-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        to top,
+        rgba(133, 67, 33, 1) 0%,
+        rgba(98, 34, 0, 0.4) 30%,
+        rgba(98, 34, 0, 0.15) 60%,
+        rgba(98, 34, 0, 0) 100%
+    );
+}
+.carousel-caption {
+    position: absolute;
+    z-index: 2;
+}
+
+/* =========================================================
+   🧩 DIVISION SECTION
+   ========================================================= */
+.division-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+.division-icon {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: var(--brand-brown);
+    color: var(--text-light);
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.division-item:hover .division-icon {
+    background: var(--brand-brown-light);
     transform: scale(1.05);
 }
-.icon-circle {
+.division-label {
+    margin: 0;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Legacy circle icons (compat) */
+.icon-circle,
+.icon-container {
     width: 70px;
     height: 70px;
-    background-color: #343a40;
+    background-color: var(--brand-brown);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto 20px;
+    margin: 0 auto 15px;
 }
-.icon-circle i {
+.icon-circle i,
+.icon-style {
     color: #fff;
     font-size: 30px;
 }
+.icon-image {
+    width: 43px;
+    height: 43px;
+}
 
-/* Responsif Styling */
-@media (max-width: 1024px) { /* Tablet */
-    .container {
-        padding: 15px;
+/* =========================================================
+   📊 TOTAL INFAQ / TABLES
+   ========================================================= */
+#totalinfaq .col-md-6 {
+    display: flex;
+}
+#totalinfaq .col-md-6 > div {
+    flex: 1;
+}
+#totalinfaq .table-responsive {
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: var(--radius-sm);
+    padding-bottom: 4px;
+}
+#totalinfaq table th,
+#totalinfaq table td {
+    white-space: nowrap;
+}
+
+/* =========================================================
+   🦶 FOOTER
+   ========================================================= */
+.footer {
+    color: var(--text-light);
+    margin-bottom: 0 !important;
+}
+.footer a {
+    color: var(--text-light);
+    text-decoration: none;
+}
+.footer a:hover {
+    color: var(--brand-accent);
+}
+.footer h5 {
+    color: var(--text-light);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.footer h5:hover {
+    color: var(--brand-accent);
+    cursor: default;
+}
+.footer-list li {
+    color: #f8f9fa;
+}
+.footer i {
+    font-size: 1.1rem;
+}
+#footer .col {
+    margin-bottom: 1.5rem;
+}
+
+/* =========================================================
+   🎛️ BUTTONS (Legacy)
+   ========================================================= */
+.btn-outline-custom {
+    background-color: transparent;
+    color: var(--brand-brown);
+    border: 2px solid var(--brand-brown);
+    transition: 0.2s;
+}
+.btn-outline-custom:hover,
+.btn-outline-custom.active {
+    background-color: var(--brand-brown);
+    color: #fff;
+    border-color: var(--brand-brown);
+}
+
+.btn-custom {
+    background-color: var(--brand-brown);
+    color: #fff;
+    border: none;
+    transition: 0.2s;
+}
+.btn-custom:hover {
+    background-color: #4e1a00;
+    color: #fff;
+}
+
+.btn-brown {
+    background: var(--brand-brown);
+    border: none;
+    color: var(--text-light);
+}
+.btn-brown:hover {
+    background: var(--brand-brown-light);
+    color: var(--text-light);
+}
+
+/* Slideshow thumbnail: FIX size */
+.slideshow-thumb {
+    width: 96px;
+    height: 56px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+/* =========================================================
+   📱 RESPONSIVE TWEAKS
+   ========================================================= */
+@media (max-width: 991.98px) {
+    .division-icon {
+        width: 96px;
+        height: 96px;
+        font-size: 1.8rem;
     }
-
-    .location-schedule {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .schedule-morning, .schedule-evening {
-        width: 100%;
-    }
-
-    .navbar-nav {
-        gap: 15px;
+    .section-heading {
+        font-size: 1.75rem;
     }
 }
 
-@media (max-width: 768px) { /* Mobile */
-
-    .location-schedule {
-        text-align: center;
-        margin-bottom: 15px;
+@media (max-width: 767.98px) {
+    header .divider {
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 
-    .schedule-morning, .schedule-evening {
-        width: 100%;
-        font-size: 14px;
-    }
-
-    .schedule-morning, .schedule-evening {
-        margin: 10px 0;
-    }
-
-    .time p {
-        font-size: 14px;
-    }
-
-    .navbar-nav {
+    header p {
+        font-size: 0.95rem;
+        justify-content: center;
+        display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 6px;
     }
 
-    .nav-item {
-        margin: 10px 0;
+    header small {
+        font-size: 0.9rem;
     }
+
+    header form .input-group {
+        justify-content: center;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 280px;
+    }
+
+    #jadwalsholat .glass {
+        padding: 1rem !important;
+    }
+
+    .section {
+        padding-top: calc(var(--section-y) * 0.8);
+        padding-bottom: calc(var(--section-y) * 0.8);
+    }
+
+    .section-heading {
+        font-size: 1.5rem;
+    }
+
+    .divider {
+        width: 64px;
+    }
+
+    .division-icon {
+        width: 88px;
+        height: 88px;
+        font-size: 1.6rem;
+    }
+    .division-label {
+        font-size: 0.95rem;
+    }
+
+    #totalinfaq .table-responsive {
+        max-height: 320px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .division-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+    }
+    .section-heading {
+        font-size: 1.4rem;
+    }
+}
+
+/* =========================================================
+   🎓 LEGACY PENDIDIKAN (Scoped)
+   Pakai: <body class="page-pendidikan">
+   ========================================================= */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-pendidikan {
+    font-family: "Quicksand", sans-serif;
+}
+
+/* Toggler icon putih */
+.page-pendidikan .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.page-pendidikan .navbar-nav {
+    justify-content: center;
+    width: 100%;
+}
+
+.page-pendidikan .nav-item {
+    margin: 0 15px;
+    text-transform: uppercase;
+}
+
+.page-pendidikan .navbar-nav .nav-link {
+    color: #ffffff !important;
+}
+.page-pendidikan .navbar-nav .nav-link:hover {
+    color: #ffd700 !important;
+}
+
+/* dropdown hover desktop */
+.page-pendidikan .nav-item.dropdown .dropdown-menu {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    background-color: var(--brand-brown);
+}
+
+@media (min-width: 992px) {
+    .page-pendidikan .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        animation: slideDown 0.2s ease;
+    }
+}
+
+.page-pendidikan .dropdown-menu .dropdown-item {
+    color: #fff;
+    background-color: var(--brand-brown);
+    padding: 10px 12px;
+}
+.page-pendidikan .dropdown-menu .dropdown-item:hover {
+    background-color: var(--brand-brown);
+    color: #ffd700;
+}
+
+/* Header banner + video */
+.page-pendidikan .header-banner {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+.page-pendidikan .video-background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.page-pendidikan .header-content {
+    position: relative;
+    z-index: 1;
+}
+.page-pendidikan .h1.header-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+.page-pendidikan .h3.header-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Buttons */
+.page-pendidikan .header-buttons .btn {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+}
+.page-pendidikan .header-buttons .btn-primary {
+    background-color: #ffd700;
+    border: none;
+    color: var(--brand-brown);
+}
+.page-pendidikan .header-buttons .btn-primary:hover {
+    background-color: #fff;
+    color: var(--brand-brown);
+}
+.page-pendidikan .header-buttons .btn-secondary {
+    background-color: var(--brand-brown);
+    border: none;
+}
+.page-pendidikan .header-buttons .btn-secondary:hover {
+    background-color: #fff;
+    color: var(--brand-brown);
+}
+
+/* Cards */
+.page-pendidikan .card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.page-pendidikan .card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+.page-pendidikan .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+.page-pendidikan .card-title {
+    color: var(--brand-brown);
+}
+
+/* Stats */
+.page-pendidikan .stats-section {
+    background-color: #fbc02d;
+}
+.page-pendidikan .stats-section h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+.page-pendidikan .stats-section p {
+    font-size: 1.25rem;
+}
+
+/* CTA */
+.page-pendidikan #pendaftaran {
+    padding: 50px 0;
+    text-align: center;
+}
+.page-pendidikan #pendaftaran .btn {
+    background-color: var(--brand-brown);
+    border-color: var(--brand-brown);
+    padding: 15px 30px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.page-pendidikan #pendaftaran .btn:hover {
+    background-color: #ffd700;
+    border-color: #ffd700;
+}
+
+/* Footer pendidikan */
+.page-pendidikan footer {
+    background-color: var(--brand-brown);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Konsultasi header fixed (legacy) */
+.container-consultation {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #0b5507;
+    color: #fff;
+    padding: 12px 20px;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.content-wrapper {
+    margin-top: 120px;
+}
+.consultation-header {
+    color: #fff;
+    text-align: left;
+    padding: 12px 15px;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+}
+.consultation-subtext {
+    color: #fff;
+    text-align: left;
+    padding: 5px 15px;
+    font-size: 18px;
+}
+
+/* =========================================================
+   🔘 FLOATING ACTION BUTTONS (FINAL)
+   ========================================================= */
+.fab-top {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 1030;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover lift */
+.fab-top:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* =========================================================
+   🟢 WHATSAPP FAB (PILL)
+   ========================================================= */
+a.fab-top {
+    height: 52px;
+    padding: 0 16px;
+
+    border-radius: 999px;
+    gap: 8px;
+
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Ikon WhatsApp */
+a.fab-top i {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+/* =========================================================
+   🔝 BACK TO TOP FAB (CIRCLE)
+   ========================================================= */
+#toTop {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50% !important;
+    padding: 0;
+
+    bottom: 84px; /* ⬅️ posisikan di atas WhatsApp */
+    display: none; /* default hidden */
+}
+
+/* Ikon tengah */
+#toTop i {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+/* =========================================================
+   📱 MOBILE ADJUSTMENT
+   ========================================================= */
+@media (max-width: 576px) {
+    a.fab-top {
+        height: 46px;
+        padding: 0 14px;
+    }
+
+    #toTop {
+        width: 46px;
+        height: 46px;
+        bottom: 76px;
+    }
+}
+/* =========================================================
+   🌿 NAVBAR ATAS – FLOATING PILL
+   ========================================================= */
+.navbar-floating {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1035;
+    overflow: visible !important;
+
+    width: min(1080px, calc(100% - 32px));
+
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-radius: 999px;
+    padding: 10px 18px;
+
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(98, 34, 0, 0.12);
+}
+
+/* Logo */
+.navbar-floating .navbar-brand img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+/* =========================================================
+   NAV LINK – hover hanya teks (tanpa bg)
+   ========================================================= */
+.navbar-floating .nav-link {
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 6px 8px;
+    font-weight: 500;
+    color: #555;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.navbar-floating .nav-link:hover,
+.navbar-floating .nav-link.active {
+    color: var(--brand-brown) !important;
+}
+
+.navbar-floating .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 12%;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--brand-brown);
+    border-radius: 2px;
+    transition: width 0.2s ease;
+}
+.navbar-floating .nav-link:hover::after,
+.navbar-floating .nav-link.active::after {
+    width: 76%;
+}
+
+/* caret dropdown */
+.navbar-floating .dropdown-toggle::after {
+    margin-left: 0.35rem;
+}
+
+/* =========================================================
+   ✅ DROPDOWN PILL MENU (SATU SISTEM UNTUK SEMUA DROPDOWN)
+   - wrapper dropdown transparan
+   - background putih hanya per item (<li>/<a>)
+   ========================================================= */
+.navbar-floating .dropdown-menu.dropdown-menu-pill {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 10px 6px !important;
+    box-shadow: none !important;
+    min-width: 220px;
+
+    /* penting untuk positioning saat hover */
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 24px);
+    margin: 0 !important;
+}
+
+.navbar-floating .dropdown-menu.dropdown-menu-pill > li {
+    margin: 10px 0;
+}
+
+.navbar-floating .dropdown-item.dropdown-item-pill {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(98, 34, 0, 0.1);
+    border-radius: 999px;
+    padding: 12px 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #333;
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+
+    transition: transform 0.18s ease, box-shadow 0.18s ease, color 0.18s ease,
+        background 0.18s ease;
+    white-space: nowrap;
+}
+
+.navbar-floating .dropdown-item.dropdown-item-pill:hover,
+.navbar-floating .dropdown-item.dropdown-item-pill:focus {
+    background: #fff;
+    color: var(--brand-brown) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* divider (jika ada) */
+.navbar-floating .dropdown-divider {
+    margin: 10px 14px;
+    border-top-color: rgba(255, 255, 255, 0.35);
+}
+
+/* =========================================================
+   ✅ HOVER DROPDOWN LANGSUNG MUNCUL (DESKTOP)
+   - anti “hilang/kedip”
+   - turun lebih bawah: atur translateY
+   ========================================================= */
+@media (min-width: 992px) {
+    .navbar-floating .hover-dropdown {
+        position: relative;
+    }
+
+    .navbar-floating .hover-dropdown > .dropdown-menu {
+        display: block; /* wajib animasi */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transform: translate(-50%, 24px); /* posisi saat hidden */
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+
+    .navbar-floating .hover-dropdown:hover > .dropdown-menu,
+    .navbar-floating .hover-dropdown:focus-within > .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+
+        transform: translate(-25%, 10px); /* ✅ lebih bawah (final) */
+    }
+}
+
+/* =========================================================
+   MOBILE NAV
+   ========================================================= */
+@media (max-width: 768px) {
+    .navbar-floating {
+        width: calc(100% - 65px);
+        border-radius: 18px;
+        padding: 12px 14px;
+    }
+
+    .navbar-floating .navbar-collapse {
+        background: rgba(255, 255, 255, 0.98);
+        margin-top: 12px;
+        padding: 16px;
+        border-radius: 16px;
+        box-shadow: var(--shadow-md);
+    }
+
+    .navbar-floating .navbar-nav {
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .navbar-floating .nav-link {
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .navbar-floating .nav-link::after {
+        display: none;
+    }
+
+    /* dropdown mobile: normal Bootstrap (klik) */
+    .navbar-floating .dropdown-menu.dropdown-menu-pill {
+        position: static;
+        transform: none !important;
+        left: auto;
+        top: auto;
+        padding: 6px 0 !important;
+    }
+
+    .navbar-floating .dropdown-menu.dropdown-menu-pill > li {
+        margin: 8px 0;
+    }
+}
+
+/* =========================================================
+   🔘 FLOATING ACTION BUTTONS
+   ========================================================= */
+.fab-top {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 1030;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.fab-top:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+a.fab-top {
+    height: 52px;
+    padding: 0 16px;
+    border-radius: 999px;
+    gap: 8px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+#toTop {
+    width: 52px;
+    height: 52px;
+    border-radius: 50% !important;
+    padding: 0;
+    bottom: 84px;
+    display: none;
+}
+
+@media (max-width: 576px) {
+    a.fab-top {
+        height: 46px;
+        padding: 0 14px;
+    }
+    #toTop {
+        width: 46px;
+        height: 46px;
+        bottom: 76px;
+    }
+}
+
+/* =========================================================
+   Buttons (opsional)
+   ========================================================= */
+.btn-brown {
+    background: var(--brand-brown);
+    border: none;
+    color: var(--text-light);
+}
+.btn-brown:hover {
+    background: var(--brand-brown-light);
+    color: var(--text-light);
+}
+
+/* Slideshow thumbnail fix */
+.slideshow-thumb {
+    width: 96px;
+    height: 56px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #fff;
 }
