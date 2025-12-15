@@ -1,0 +1,25 @@
+/* Mengubah warna teks pada tautan di dalam daftar Informasi Selengkapnya */
+.col-md-4 li {
+    color: #ffffff; /* Warna teks tautan normal (putih) */
+    text-decoration: none;
+}
+
+/* Mengubah warna teks saat tautan di-hover */
+.col-md-4 li:hover {
+    color: #622200; /* Warna cokelat tua saat di-hover */
+}
+
+/* Untuk elemen pembungkus, jika digunakan */
+.video-container {
+    width: 100%;
+    /* Atur tinggi container agar konten di atasnya tetap berada di dalam viewport */
+    height: auto;
+}
+
+.video-background {
+    /* Semua properti yang sama seperti di atas */
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    object-fit: cover;
+    /* ... properti lain jika perlu ... */
+}

@@ -4,74 +4,111 @@
     <!-- Navbar khusus untuk bidang pendidikan -->
     <div class="page-pendidikan">
         <nav class="navbar navbar-expand-lg navbar-light p-3" style="background-color: #622200; padding: 10px 0;">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <!-- Tentang Kami Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link text-white" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Tentang Kami
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Visi Misi</a></li>
-                            <li><a class="dropdown-item" href="#">Fasilitas</a></li>
-                            <li><a class="dropdown-item" href="#">Guru dan Staff</a></li>
-                        </ul>
-                    </li>
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" href="{{ route('pendidikan') }}">
+                    Bidang Pendidikan Al-Iman
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-white" href="{{ route('pendidikan.about_us.index') }}">
+                                Tentang Kami
+                            </a>
 
-                    <!-- Program Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link text-white" href="#" id="navbarDropdownProgram" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Program
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownProgram">
-                            <li><a class="dropdown-item" href="#">TPQ (Taman Pendidikan Al - Qur'an)</a></li>
-                            <li><a class="dropdown-item" href="#">Daycare</a></li>
-                            <li><a class="dropdown-item" href="#">Kelompok Bermain</a></li>
-                            <li><a class="dropdown-item" href="#">Taman Kanak-kanak</a></li>
-                        </ul>
-                    </li>
+                            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false"
+                                style="padding: 0 0.5rem; margin-left: -10px;">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </a>
 
-                    <!-- Pendaftaran Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link text-white" href="#" id="navbarDropdownPendaftaran" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Pendaftaran
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownPendaftaran">
-                            <li><a class="dropdown-item" href="#">Prosedur & Persyaratan</a></li>
-                            <li><a class="dropdown-item" href="#">Pendaftaran Online</a></li>
-                            <li><a class="dropdown-item" href="#">Informasi Selengkapnya</a></li>
-                        </ul>
-                    </li>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ route('pendidikan.about_us.vision') }}">Visi Misi</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('pendidikan.about_us.facility') }}">Fasilitas</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('pendidikan.about_us.staff') }}">Guru dan
+                                        Staff</a></li>
+                            </ul>
+                        </li>
 
-                    <!-- Untuk Orang Tua Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link text-white" href="#" id="navbarDropdownOrtu" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Untuk Orang Tua
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownOrtu">
-                            <li><a class="dropdown-item" href="#">Proteksi Anak</a></li>
-                            <li><a class="dropdown-item" href="#">Saran & Masukan</a></li>
-                        </ul>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-white" href="{{ route('pendidikan.program.index') }}">
+                                Program
+                            </a>
 
-                    <!-- Berita -->
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Berita</a>
-                    </li>
+                            <a class="nav-link text-white" href="#" id="navbarDropdownProgram"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="padding: 0 0.5rem; margin-left: -10px;">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </a>
 
-                    <!-- Kontak -->
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Kontak</a>
-                    </li>
-                </ul>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownProgram">
+                                <li><a class="dropdown-item" href="{{ route('pendidikan.program.tpq') }}">TPQ (Taman
+                                        Pendidikan Al - Qur'an)</a></li>
+                                <li><a class="dropdown-item" href="{{ route('pendidikan.program.daycare') }}">Daycare</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('pendidikan.program.kb') }}">Kelompok
+                                        Bermain</a></li>
+                                <li><a class="dropdown-item" href="{{ route('pendidikan.program.tk') }}">Taman
+                                        Kanak-kanak</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-white" href="{{ route('pendidikan.registration.index') }}">
+                                Pendaftaran
+                            </a>
+
+                            <a class="nav-link text-white" href="#" id="navbarDropdownPendaftaran"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="padding: 0 0.5rem; margin-left: -10px;">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownPendaftaran">
+                                <li><a class="dropdown-item"
+                                        href="{{ route('pendidikan.registration.procedure') }}">Prosedur & Persyaratan</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('pendidikan.registration.online') }}">Pendaftaran Online</a></li>
+                                <li><a class="dropdown-item" href="{{ route('pendidikan.registration.info') }}">Informasi
+                                        Selengkapnya</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-white" href="{{ route('pendidikan.for_parent.index') }}">
+                                Untuk Orang Tua
+                            </a>
+
+                            <a class="nav-link text-white" href="#" id="navbarDropdownOrtu"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="padding: 0 0.5rem; margin-left: -10px;">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownOrtu">
+                                <li><a class="dropdown-item"
+                                        href="{{ route('pendidikan.for_parent.protection') }}">Proteksi Anak</a></li>
+                                <li><a class="dropdown-item" href="{{ route('pendidikan.for_parent.feedback') }}">Saran &
+                                        Masukan</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('pendidikan.news.index') }}">Berita</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('pendidikan.contact.index') }}">Kontak</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </div>
@@ -95,7 +132,8 @@
         </header>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered"> <!-- Modal di tengah layar -->
                 <div class="modal-content">
                     <div class="modal-header">
@@ -210,83 +248,74 @@
                     </div>
                 </div>
             </section>
+        </div>
 
-            <!-- Kontak -->
-            <section id="kontak" class="my-5">
-                <div class="container py-5 px-4">
-                    <div class="row py-2 px-4">
-                        <div class="container">
-                            <div class="row align-items-start">
-                                <!-- Kolom Kiri: Logo dan Kontak -->
-                                <div class="col-md-6">
-                                    <a href="#" class="logo text-decoration-none">
-                                        <div class="d-flex align-items-start">
-                                            <img class="img-fluid mb-4" src="{{ asset('images/logo.png') }}" alt="Logo Al Iman" width="90">
-                                        </div>
-                                    </a>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-3">
-                                            <div class="row">
-                                                <div class="col-sm-1">
-                                                    <i class="bi bi-geo-alt"></i>
-                                                </div>
-                                                <div class="col">
-                                                    Jl. Pendidikan No. 12, Surabaya
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="mb-3">
-                                            <div class="row">
-                                                <div class="col-sm-1">
-                                                    <i class="bi bi-telephone"></i>
-                                                </div>
-                                                <div class="col">
-                                                    <a href="tel:+62311234567">(031) 1234567</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="mb-3">
-                                            <div class="row">
-                                                <div class="col-sm-1">
-                                                    <i class="bi bi-envelope"></i>
-                                                </div>
-                                                <div class="col">
-                                                    <a href="mailto:info@alimansurabaya.com">info@alimansurabaya.com</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- Kolom Kanan: Informasi Navbar -->
-                                <div class="col-md-6">
-                                    <h5 class="mb-4">Informasi Selengkapnya</h5>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-3"><a href="#">Pendaftaran</a></li>
-                                        <li class="mb-3"><a href="#">Kegiatan</a></li>
-                                        <li class="mb-3"><a href="#">Galeri</a></li>
-                                        <li class="mb-3"><a href="#">Profil</a></li>
-                                        <li class="mb-3"><a href="#">Kontak Kami</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+        <div class="container-fluid text-white py-5" style="background-color: #FBC02D;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <a href="#" class="logo text-decoration-none">
+                            <img class="img-fluid mb-4" src="{{ asset('images/logo.png') }}" alt="Logo Al Iman"
+                                width="90">
+                        </a>
+                        <ul class="list-unstyled">
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bi bi-geo-alt me-2"></i>
+                                <span>Jl. Pendidikan No. 12, Surabaya</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-center">
+                                <i class="bi bi-telephone me-2"></i>
+                                <a href="tel:+62311234567" class="text-white text-decoration-none">(031) 1234567</a>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="bi bi-envelope me-2"></i>
+                                <a href="mailto:info@alimansurabaya.com"
+                                    class="text-white text-decoration-none">info@alimansurabaya.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <h5 class="fw-bold mb-3">Informasi Selengkapnya</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Pendaftaran</a>
+                            </li>
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Kegiatan</a>
+                            </li>
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Galeri</a></li>
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Profil</a></li>
+                            <li><a href="#" class="text-white text-decoration-none">Kontak Kami</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <h5 class="fw-bold mb-3">Ikuti Kami</h5>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="#" class="text-white fs-4"><i class="bi bi-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-white fs-4"><i class="bi bi-instagram"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-white fs-4"><i class="bi bi-youtube"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-white fs-4"><i class="bi bi-twitter"></i></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </section>
-
-
-        </div>
-        <div id="copyright" class="container-fluid py-3" style="background-color: #622200">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 col-xs-12 text-center" style="color: white;">Yayasan Masjid Al Iman Sutorejo
-                        Indah
-                        Surabaya | ©2024</div>
+                <hr class="mt-4">
+                <div class="text-center pt-3">
+                    <p>&copy; 2025 Al Iman Surabaya. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/style-pendidikan.css') }}">
+@endpush
 
 @push('scripts')
     <script>
@@ -350,12 +379,12 @@
 
         // JavaScript Modal
 
-        window.addEventListener('load', function () {
-        setTimeout(function () {
-            var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
-            myModal.show();
-        }, 1500);
-    });
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                myModal.show();
+            }, 1500);
+        });
 
         // Javascript Animation AOS
 
